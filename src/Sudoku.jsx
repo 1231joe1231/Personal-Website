@@ -65,20 +65,13 @@ function Sudoku() {
             生成
           </Button>
         </Box>
-        {/* <Table >
-            <TableBody>
-              {sudokuArr.map((row, i) => (
-                // TODO: highlighted as a prop, use highlightArr to record
-                <RenderRow data={row} color={i % 2 === 0 ? "cyan" : "white"} />
-              ))}
-            </TableBody>
-          </Table> */}
         <Grid container className={classes.root} spacing={0}>
           <Grid item xs={12}>
             {sudokuArr.map((row, i) => (
               <Grid container justify="center" spacing={0}>
                 {row.map((value, j) => (
                   <Grid key={value} item>
+                    {/* TODO: highlighted as a prop, use highlightArr to record */}
                     <Box
                       className={classes.paper}
                       borderLeft={j === 0 ? 3 : 1}
