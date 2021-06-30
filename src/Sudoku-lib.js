@@ -7,7 +7,7 @@
     Please see the README for more details.
 */
 
-export function sudokuLib(root) {
+export function sudokuLibConstructor(root) {
   var sudoku = (root.sudoku = {}); // Global reference to the sudoku library
 
   sudoku.DIGITS = "123456789"; // Allowed sudoku.DIGITS

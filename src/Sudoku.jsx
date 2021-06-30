@@ -10,21 +10,36 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { sudokuLib } from "./Sudoku-lib";
+import { sudokuLibConstructor } from "./Sudoku-lib";
 
 function Sudoku() {
   const [sudokuArr, setSudokuArr] = useState([]);
+  const [difficulty, setDifficulty] = useState("medium");
+  var sudokuLib = null;
 
-  const str =
-    "23.94.67.8..3259149..76.32.1.....7925.321.4864..68.5317..1....96598721433...9...7";
+  const sudokuLibGetter = () => {
+    var obj = {}
+    sudokuLibConstructor(obj)
+    return obj.sudoku
+  }
 
   useEffect(() => {
-    var obj = {}
     // initialize sudokuLib
-    sudokuLib(obj)
-    var SudokuLib = obj.sudoku
-    setSudokuArr(SudokuLib.board_string_to_grid(str))
+    generateSudoku()
   }, []);
+
+  const generateSudoku = () => {
+    sudokuLib = sudokuLibGetter()
+    var str = sudokuLib.generate(difficulty)
+    setSudokuArr(sudokuLib.board_string_to_grid(str))
+  }
+
+  const solveSudoku = () => {
+    sudokuLib = sudokuLibGetter()
+    var cur = sudokuLib.board_grid_to_string(sudokuArr)
+    var answer = sudokuLib.solve(cur)
+    setSudokuArr(sudokuLib.board_string_to_grid(answer))
+  }
 
   // Experiment
   const classes = useStyles();
@@ -39,7 +54,7 @@ function Sudoku() {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h6">News</Typography>
+          <Typography variant="h6">Sudoku!</Typography>
           <Button color="inherit" style={{ marginRight: "10px" }}>
             Login
           </Button>
@@ -53,10 +68,10 @@ function Sudoku() {
             padding: "20px",
           }}
         >
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={solveSudoku}>
             解答
           </Button>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={generateSudoku}>
             生成
           </Button>
         </Box>
@@ -68,11 +83,16 @@ function Sudoku() {
                   <Grid key={j} item>
                     {/* TODO: highlighted as a prop, use highlightArr to record */}
                     <Box
-                      className={classes.paper}
-                      borderLeft={j === 0 ? 3 : 1}
-                      borderRight={j === 8 ? 3 : 1}
-                      borderTop={i === 0 ? 3 : 1}
-                      borderBottom={i === 8 ? 3 : 1}
+                      onClick={()=>{console.log("Current index is " + i + ", " + j)}}
+                      className={classes.input}
+                      borderLeft={j === 0 ? 4 : 
+                                  j === 3 || j === 6 ? 2 : 1}
+                      borderRight={j === 8 ? 4 : 
+                                  j === 2 || j === 5 ? 2 : 1}
+                      borderTop={i === 0 ? 4 : 
+                                  i === 3 || i === 6 ? 2 : 1}
+                      borderBottom={i === 8 ? 4 : 
+                                  i === 2 || i === 5 ? 2 : 1}
                     >
                       {value}
                     </Box>
@@ -91,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
+  input: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
