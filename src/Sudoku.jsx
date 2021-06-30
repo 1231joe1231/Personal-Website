@@ -6,11 +6,11 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,44 +24,44 @@ function Sudoku() {
   var sudokuLib = null;
 
   const sudokuLibGetter = () => {
-    var obj = {}
-    sudokuLibConstructor(obj)
-    return obj.sudoku
-  }
+    var obj = {};
+    sudokuLibConstructor(obj);
+    return obj.sudoku;
+  };
+
+  const generateSudoku = () => {
+    sudokuLib = sudokuLibGetter();
+    var str = sudokuLib.generate(difficulty);
+    setSudokuStr(str);
+    setSudokuArr(sudokuLib.board_string_to_grid(str));
+  };
 
   useEffect(() => {
     // initialize sudokuLib
-    generateSudoku()
+    generateSudoku();
   }, []);
 
-  const generateSudoku = () => {
-    sudokuLib = sudokuLibGetter()
-    var str = sudokuLib.generate(difficulty)
-    setSudokuStr(str)
-    setSudokuArr(sudokuLib.board_string_to_grid(str))
-  }
-
   const solveSudoku = () => {
-    sudokuLib = sudokuLibGetter()
-    var answer = sudokuLib.solve(sudokuStr)
-    setSudokuArr(sudokuLib.board_string_to_grid(answer))
-  }
+    sudokuLib = sudokuLibGetter();
+    var answer = sudokuLib.solve(sudokuStr);
+    setSudokuArr(sudokuLib.board_string_to_grid(answer));
+  };
 
   const showCandidate = () => {
-    sudokuLib = sudokuLibGetter()
+    sudokuLib = sudokuLibGetter();
     if (candidateShowed) {
-      var answer = sudokuLib.get_candidates(sudokuStr)
-      setSudokuArr(answer)
+      var answer = sudokuLib.get_candidates(sudokuStr);
+      setSudokuArr(answer);
     } else {
-      setSudokuArr(sudokuLib.board_string_to_grid(sudokuStr))
+      setSudokuArr(sudokuLib.board_string_to_grid(sudokuStr));
     }
-    setCandidateShowed(!candidateShowed)
-  }
+    setCandidateShowed(!candidateShowed);
+  };
 
   const handleDifficulty = (event) => {
     setDifficulty(event.target.value);
-    console.log(difficulty)
-  }
+    console.log(difficulty);
+  };
 
   // Experiment
   const classes = useStyles();
@@ -76,7 +76,7 @@ function Sudoku() {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h6">Sudoku!</Typography>
+          <Typography variant="h5">Sudoku!</Typography>
           <Button color="inherit" style={{ marginRight: "10px" }}>
             Login
           </Button>
@@ -104,11 +104,12 @@ function Sudoku() {
               value={difficulty}
               onChange={handleDifficulty}
             >
+              {/* 因为太简单所以隐藏了
               <MenuItem value={"easy"}>简单</MenuItem>
-              <MenuItem value={"medium"}>中等</MenuItem>
-              <MenuItem value={"hard"}>难</MenuItem>
-              <MenuItem value={"very-hard"}>很难</MenuItem>
-              <MenuItem value={"insane"}>非常难</MenuItem>
+              <MenuItem value={"medium"}>中等</MenuItem> */}
+              <MenuItem value={"hard"}>简单</MenuItem>
+              <MenuItem value={"very-hard"}>中等</MenuItem>
+              <MenuItem value={"insane"}>很难</MenuItem>
               <MenuItem value={"inhuman"}>超难</MenuItem>
             </Select>
           </FormControl>
@@ -124,18 +125,16 @@ function Sudoku() {
                   <Grid key={j} item>
                     {/* TODO: highlighted as a prop, use highlightArr to record */}
                     <Box
-                      onClick={()=>{console.log("Current index is " + i + ", " + j)}}
+                      onClick={() => {
+                        console.log("Current index is " + i + ", " + j);
+                      }}
                       className={classes.input}
-                      borderLeft={j === 0 ? 4 : 
-                                  j === 3 || j === 6 ? 2 : 1}
-                      borderRight={j === 8 ? 4 : 
-                                  j === 2 || j === 5 ? 2 : 1}
-                      borderTop={i === 0 ? 4 : 
-                                  i === 3 || i === 6 ? 2 : 1}
-                      borderBottom={i === 8 ? 4 : 
-                                  i === 2 || i === 5 ? 2 : 1}
+                      borderLeft={j === 0 ? 4 : j === 3 || j === 6 ? 2 : 1}
+                      borderRight={j === 8 ? 4 : j === 2 || j === 5 ? 2 : 1}
+                      borderTop={i === 0 ? 4 : i === 3 || i === 6 ? 2 : 1}
+                      borderBottom={i === 8 ? 4 : i === 2 || i === 5 ? 2 : 1}
                     >
-                      <Typography>{value}</Typography>
+                      {value}
                     </Box>
                   </Grid>
                 ))}
