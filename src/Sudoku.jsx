@@ -5,20 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 import Grid from "@material-ui/core/Grid";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { board_string_to_grid } from "./Sudoku-lib-test";
+import { sudokuLib } from "./Sudoku-lib";
 
 function Sudoku() {
   const [sudokuArr, setSudokuArr] = useState([]);
@@ -27,8 +19,11 @@ function Sudoku() {
     "23.94.67.8..3259149..76.32.1.....7925.321.4864..68.5317..1....96598721433...9...7";
 
   useEffect(() => {
-    // Update the document title using the browser API
-    setSudokuArr(board_string_to_grid(str));
+    var obj = {}
+    // initialize sudokuLib
+    sudokuLib(obj)
+    var SudokuLib = obj.sudoku
+    setSudokuArr(SudokuLib.board_string_to_grid(str))
   }, []);
 
   // Experiment
@@ -68,9 +63,9 @@ function Sudoku() {
         <Grid container className={classes.root} spacing={0}>
           <Grid item xs={12}>
             {sudokuArr.map((row, i) => (
-              <Grid container justify="center" spacing={0}>
+              <Grid container justify="center" spacing={0} key={i}>
                 {row.map((value, j) => (
-                  <Grid key={value} item>
+                  <Grid key={j} item>
                     {/* TODO: highlighted as a prop, use highlightArr to record */}
                     <Box
                       className={classes.paper}
@@ -94,7 +89,6 @@ function Sudoku() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "5vh",
     flexGrow: 1,
   },
   paper: {
@@ -112,32 +106,32 @@ const useStyles = makeStyles((theme) => ({
       width: "60px",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "30px",
-      height: "80px",
-      width: "80px",
+      fontSize: "25px",
+      height: "60px",
+      width: "60px",
     },
   },
 }));
 
-const RenderRow = (props) => {
-  const { cell } = tableCellStyling(props);
-  return (
-    <TableRow>
-      {props.data.map((col, i) => (
-        <TableCell className={cell}>{col}</TableCell>
-      ))}
-    </TableRow>
-  );
-};
+// const RenderRow = (props) => {
+//   const { cell } = tableCellStyling(props);
+//   return (
+//     <TableRow>
+//       {props.data.map((col, i) => (
+//         <TableCell className={cell}>{col}</TableCell>
+//       ))}
+//     </TableRow>
+//   );
+// };
 
-const tableCellStyling = makeStyles(() => ({
-  cell: {
-    textAlign: "center",
-    fontSize: "30px",
-    border: "2px solid black",
-    borderRadius: "5px",
-    backgroundColor: ({ color }) => color,
-  },
-}));
+// const tableCellStyling = makeStyles(() => ({
+//   cell: {
+//     textAlign: "center",
+//     fontSize: "30px",
+//     border: "2px solid black",
+//     borderRadius: "5px",
+//     backgroundColor: ({ color }) => color,
+//   },
+// }));
 
 export default Sudoku;
