@@ -6,6 +6,7 @@
 
     Please see the README for more details.
 */
+import { solveString, printBoard } from "sudoku-dlx";
 
 export function sudokuLibConstructor(root) {
   var sudoku = (root.sudoku = {}); // Global reference to the sudoku library
@@ -124,7 +125,7 @@ export function sudokuLibConstructor(root) {
       for (var si in SQUARES) {
         var square = SQUARES[si];
 
-        if (candidates[square].length == 1) {
+        if (candidates[square].length === 1) {
           single_candidates.push(candidates[square]);
         }
       }
@@ -139,7 +140,7 @@ export function sudokuLibConstructor(root) {
         var givens_idxs = [];
         for (var i in SQUARES) {
           var square = SQUARES[i];
-          if (candidates[square].length == 1) {
+          if (candidates[square].length === 1) {
             board += candidates[square];
             givens_idxs.push(i);
           } else {
@@ -222,6 +223,30 @@ export function sudokuLibConstructor(root) {
     return false;
   };
 
+  sudoku.dlx_solve = function (board) {
+    var tmp = solveString(board);
+    if (tmp.length !== 0) {
+      var result = tmp[0];
+      var solGrid = [];
+      for (var i = 0; i < 9; i++) {
+        solGrid.push(["", "", "", "", "", "", "", "", ""]);
+      }
+      for (var r = 0; r < 81; ++r) {
+        solGrid[result[r].row][result[r].col] = result[r].number;
+      }
+      return solGrid;
+    }
+  };
+
+  sudoku.dlx_solve_str = function (board) {
+    var result = sudoku.dlx_solve(board);
+    if (result !== undefined) {
+      return sudoku.board_grid_to_string(result);
+    }
+  };
+
+  sudoku.check_uniqueness = function (board) {};
+
   sudoku.get_candidates = function (board) {
     /* Return all possible candidatees for each square as a grid of 
         candidates, returnning `false` if a contradiction is encountered.
@@ -251,7 +276,7 @@ export function sudokuLibConstructor(root) {
     for (var square in candidates_map) {
       var candidates = candidates_map[square];
       cur_row.push(candidates);
-      if (i % 9 == 8) {
+      if (i % 9 === 8) {
         rows.push(cur_row);
         cur_row = [];
       }
@@ -495,7 +520,7 @@ export function sudokuLibConstructor(root) {
     var squares_vals_map = {};
 
     // Make sure `board` is a string of length 81
-    if (board.length != SQUARES.length) {
+    if (board.length !== SQUARES.length) {
       throw "Board/squares length mismatch.";
     } else {
       for (var i in SQUARES) {
@@ -608,7 +633,7 @@ export function sudokuLibConstructor(root) {
     var cur_row = [];
     for (var i in board_string) {
       cur_row.push(board_string[i]);
-      if (i % 9 == 8) {
+      if (i % 9 === 8) {
         rows.push(cur_row);
         cur_row = [];
       }

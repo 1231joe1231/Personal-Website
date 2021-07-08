@@ -5,12 +5,14 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+// import Paper from "@material-ui/core/Paper";
+// import InputLabel from "@material-ui/core/InputLabel";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import FormHelperText from "@material-ui/core/FormHelperText";
+// import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
+import Slider from "@material-ui/core/Slider";
+import SpeedIcon from "@material-ui/icons/Speed";
 import Grid from "@material-ui/core/Grid";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,9 +20,9 @@ import { sudokuLibConstructor } from "./Sudoku-lib";
 
 function Sudoku() {
   const [sudokuArr, setSudokuArr] = useState([]);
-  const [difficulty, setDifficulty] = useState("insane");
+  const [difficulty, setDifficulty] = useState(55);
   const [sudokuStr, setSudokuStr] = useState("");
-  const [candidateShowed, setCandidateShowed] = useState(true);
+  // const [candidateShowed, setCandidateShowed] = useState(true);
   var sudokuLib = null;
 
   const sudokuLibGetter = () => {
@@ -31,7 +33,7 @@ function Sudoku() {
 
   const generateSudoku = () => {
     sudokuLib = sudokuLibGetter();
-    var str = sudokuLib.generate(difficulty);
+    var str = sudokuLib.generate(81-difficulty);
     setSudokuStr(str);
     setSudokuArr(sudokuLib.board_string_to_grid(str));
   };
@@ -43,25 +45,28 @@ function Sudoku() {
 
   const solveSudoku = () => {
     sudokuLib = sudokuLibGetter();
-    var answer = sudokuLib.solve(sudokuStr);
-    setSudokuArr(sudokuLib.board_string_to_grid(answer));
+    setSudokuArr(sudokuLib.dlx_solve(sudokuStr));
   };
 
-  const showCandidate = () => {
-    sudokuLib = sudokuLibGetter();
-    if (candidateShowed) {
-      var answer = sudokuLib.get_candidates(sudokuStr);
-      setSudokuArr(answer);
-    } else {
-      setSudokuArr(sudokuLib.board_string_to_grid(sudokuStr));
-    }
-    setCandidateShowed(!candidateShowed);
+  const handleChange = (event, newValue) => {
+    setDifficulty(newValue);
   };
 
-  const handleDifficulty = (event) => {
-    setDifficulty(event.target.value);
-    console.log(difficulty);
-  };
+  // const showCandidate = () => {
+  //   sudokuLib = sudokuLibGetter();
+  //   if (candidateShowed) {
+  //     var answer = sudokuLib.get_candidates(sudokuStr);
+  //     setSudokuArr(answer);
+  //   } else {
+  //     setSudokuArr(sudokuLib.board_string_to_grid(sudokuStr));
+  //   }
+  //   setCandidateShowed(!candidateShowed);
+  // };
+
+  // const handleDifficulty = (event) => {
+  //   setDifficulty(event.target.value);
+  //   console.log(difficulty);
+  // };
 
   // Experiment
   const classes = useStyles();
@@ -88,31 +93,30 @@ function Sudoku() {
             display: "flex",
             justifyContent: "space-between",
             padding: "20px",
+            marginTop: "20px"
           }}
         >
           <Button variant="contained" color="primary" onClick={solveSudoku}>
             解答
           </Button>
-          <Button variant="contained" color="primary" onClick={showCandidate}>
-            提示
-          </Button>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-label">难度</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={difficulty}
-              onChange={handleDifficulty}
-            >
-              {/* 因为太简单所以隐藏了
-              <MenuItem value={"easy"}>简单</MenuItem>
-              <MenuItem value={"medium"}>中等</MenuItem> */}
-              <MenuItem value={"hard"}>简单</MenuItem>
-              <MenuItem value={"very-hard"}>中等</MenuItem>
-              <MenuItem value={"insane"}>很难</MenuItem>
-              <MenuItem value={"inhuman"}>超难</MenuItem>
-            </Select>
-          </FormControl>
+          <Grid container spacing={2} alignItems="center" alignContent="center" justify="center">
+            <Grid item>
+              <SpeedIcon style={{transform: "rotateY(180deg)"}}/>
+            </Grid>
+            <Grid item className={classes.slider}>
+              <Slider
+                value={difficulty}
+                onChange={handleChange}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="on"
+                min={50}
+                max={60}
+              />
+            </Grid>
+            <Grid item>
+              <SpeedIcon />
+            </Grid>
+          </Grid>
           <Button variant="contained" color="primary" onClick={generateSudoku}>
             生成
           </Button>
@@ -172,6 +176,14 @@ const useStyles = makeStyles((theme) => ({
       width: "60px",
     },
   },
+  slider: {
+    [theme.breakpoints.down("sm")]: {
+      width: "200px",
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: "300px",
+    }
+  }
 }));
 
 // const RenderRow = (props) => {
