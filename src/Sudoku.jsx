@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "@material-ui/core/AppBar";
+import AppBar from "./Component/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -74,19 +74,7 @@ function Sudoku() {
 
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography variant="h5">Sudoku!</Typography>
-          {/* <Button color="inherit" style={{ marginRight: "10px" }}>
-            Login
-          </Button> */}
-        </Toolbar>
-      </AppBar>
+      <AppBar title="Sudoku!"/>
       <Container maxWidth="md">
         <Box
           style={{
