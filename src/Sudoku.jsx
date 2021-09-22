@@ -82,9 +82,9 @@ function Sudoku() {
           }}
         >
           <Typography variant="h5">Sudoku!</Typography>
-          <Button color="inherit" style={{ marginRight: "10px" }}>
+          {/* <Button color="inherit" style={{ marginRight: "10px" }}>
             Login
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
       <Container maxWidth="md">
@@ -109,7 +109,7 @@ function Sudoku() {
                 onChange={handleChange}
                 aria-labelledby="continuous-slider"
                 valueLabelDisplay="on"
-                min={50}
+                min={45}
                 max={60}
               />
             </Grid>
