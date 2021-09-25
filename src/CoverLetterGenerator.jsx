@@ -123,6 +123,9 @@ function CoverLetter(props) {
           margin: [0, 15, 0, 0],
         },
         {
+          text: ["I would like to apply for the ", Title, " position at ", Employer],
+        },
+        {
           text: paragraphs.body_para[BodyPara1].content,
           margin: [0, 15, 0, 0],
         },
@@ -227,7 +230,7 @@ function CoverLetter(props) {
               style={{ marginTop: "20px" }}
             />
           </Box>
-          <Typography variant="h4" style={{ marginTop: "20px" }}>
+          <Typography variant="h4" style={{ marginTop: "50px" }}>
             Body Paragraph
           </Typography>
           <Box
@@ -249,7 +252,9 @@ function CoverLetter(props) {
                 onChange={handleInput}
               >
                 {paragraphs.body_para.map((item, key) => {
-                  return <MenuItem value={key}>{item.description}</MenuItem>;
+                  return key === 0 ? null : (
+                    <MenuItem value={key}>{item.description}</MenuItem>
+                  );
                 })}
               </Select>
             </FormControl>
@@ -263,7 +268,9 @@ function CoverLetter(props) {
                 onChange={handleInput}
               >
                 {paragraphs.body_para.map((item, key) => {
-                  return <MenuItem value={key}>{item.description}</MenuItem>;
+                  return key === 0 ? null : (
+                    <MenuItem value={key}>{item.description}</MenuItem>
+                  );
                 })}
               </Select>
             </FormControl>
