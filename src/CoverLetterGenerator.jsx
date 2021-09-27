@@ -30,9 +30,10 @@ function CoverLetter(props) {
   const desktop = useMediaQuery(theme.breakpoints.up("md"));
   const [file, setFile] = useState(null);
   const [FullName, setFullName] = useState("");
+  const [ShortName, setShortName] = useState("");
   const [Employer, setEmployer] = useState("");
   const [Title, setTitle] = useState("");
-  const [Anchor, setAnchor] = useState("");
+  const [Anchor, setAnchor] = useState("inspired me to apply for this position.");
   const [Address, setAddress] = useState("");
   const [BodyPara1, setBodyPara1] = useState(0);
   const [BodyPara2, setBodyPara2] = useState(0);
@@ -58,6 +59,9 @@ function CoverLetter(props) {
     switch (event.target.name) {
       case "FullName":
         setFullName(event.target.value);
+        break;
+      case "ShortName":
+        setShortName(event.target.value);
         break;
       case "Employer":
         setEmployer(event.target.value);
@@ -123,7 +127,7 @@ function CoverLetter(props) {
           text: [Employer, "\n", Title, "\n", Address],
         },
         {
-          text: ["Dear ", FullName, ","],
+          text: ["Dear ", ShortName, ","],
           margin: [0, 15, 0, 0],
         },
         {
@@ -168,7 +172,7 @@ function CoverLetter(props) {
         {
           text: "Respectfully yours,\nRuixin Zhuang",
           margin: [0, 15, 0, 0],
-        }
+        },
       ],
     };
     return doc;
@@ -213,13 +217,25 @@ function CoverLetter(props) {
               justifyContent: "space-between",
               flexWrap: "wrap",
               marginTop: "20px",
-              width: "90%",
+              width: "65%",
             }}
           >
             <TextField
               name="FullName"
               label="Full Name"
               value={FullName}
+              onChange={handleInput}
+              inputProps={{
+                autocomplete: "nope",
+                form: {
+                  autocomplete: "off",
+                },
+              }}
+            />
+            <TextField
+              name="ShortName"
+              label="Short Name"
+              value={ShortName}
               onChange={handleInput}
               inputProps={{
                 autocomplete: "nope",
@@ -239,6 +255,7 @@ function CoverLetter(props) {
                   autocomplete: "off",
                 },
               }}
+              style={{ marginTop: "20px" }}
             />
             <TextField
               name="Title"
@@ -251,6 +268,7 @@ function CoverLetter(props) {
                   autocomplete: "off",
                 },
               }}
+              style={{ marginTop: "20px" }}
             />
             <TextField
               fullWidth
