@@ -32,6 +32,7 @@ function CoverLetter(props) {
   const [FullName, setFullName] = useState("");
   const [Employer, setEmployer] = useState("");
   const [Title, setTitle] = useState("");
+  const [Anchor, setAnchor] = useState("");
   const [Address, setAddress] = useState("");
   const [BodyPara1, setBodyPara1] = useState(0);
   const [BodyPara2, setBodyPara2] = useState(0);
@@ -66,6 +67,9 @@ function CoverLetter(props) {
         break;
       case "Address":
         setAddress(event.target.value);
+        break;
+      case "Anchor":
+        setAnchor(event.target.value);
         break;
       case "BodyPara1":
         setBodyPara1(event.target.value);
@@ -123,7 +127,23 @@ function CoverLetter(props) {
           margin: [0, 15, 0, 0],
         },
         {
-          text: ["I would like to apply for the ", Title, " position at ", Employer],
+          text: [
+            "I would like to apply for the ",
+            Title,
+            " position at ",
+            Employer,
+            ". I am currently a fourth year student at University of Toronto Scarborough, ",
+            "and I am specialized in Computer Science Co-op. ",
+            // "Among all of my past experience including pursuing my degree on campus, ",
+            // "working at start-up company, collaborating on off-campus projects and being an software developer at PwC Shanghai AC, ",
+            // "I would conclude myself to be a fast learner, tech-savvy developer as well as a diligent student.",
+            Anchor,
+            " With ",
+            paragraphs.body_para[BodyPara1].intro_sentence,
+            " and ",
+            paragraphs.body_para[BodyPara2].intro_sentence,
+            ", I believe I can make meaningful contributions to your company.",
+          ],
         },
         {
           text: paragraphs.body_para[BodyPara1].content,
@@ -133,6 +153,22 @@ function CoverLetter(props) {
           text: paragraphs.body_para[BodyPara2].content,
           margin: [0, 15, 0, 0],
         },
+        {
+          text: [
+            "In conclusion, ",
+            paragraphs.body_para[BodyPara1].conclusion_sentence,
+            ", while ",
+            paragraphs.body_para[BodyPara2].conclusion_sentence,
+            ". The accumulation of all of my skills will make me a good fit for the ",
+            Title,
+            " in your company. I sincerely look forward to receiving your reply and hopefully meeting you in the interview. Thank you.",
+          ],
+          margin: [0, 15, 0, 0],
+        },
+        {
+          text: "Respectfully yours,\nRuixin Zhuang",
+          margin: [0, 15, 0, 0],
+        }
       ],
     };
     return doc;
@@ -169,7 +205,7 @@ function CoverLetter(props) {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h4">Contact Information</Typography>
+          <Typography variant="h4">Intro Paragraph</Typography>
           <Box
             style={{
               display: "flex",
@@ -177,6 +213,7 @@ function CoverLetter(props) {
               justifyContent: "space-between",
               flexWrap: "wrap",
               marginTop: "20px",
+              width: "90%",
             }}
           >
             <TextField
@@ -220,6 +257,21 @@ function CoverLetter(props) {
               name="Address"
               label="Company Address"
               value={Address}
+              onChange={handleInput}
+              inputProps={{
+                autocomplete: "nope",
+                form: {
+                  autocomplete: "off",
+                },
+              }}
+              style={{ marginTop: "20px" }}
+            />
+            <TextField
+              fullWidth
+              multiline
+              name="Anchor"
+              label="Anchor Sentence"
+              value={Anchor}
               onChange={handleInput}
               inputProps={{
                 autocomplete: "nope",

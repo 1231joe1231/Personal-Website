@@ -3,6 +3,7 @@
     {
       "description" : "Example body paragraph",
       "content": "Example body paragraph balabala",
+      "intro_sentence": "Example Noun for intro paragraph",
       "conclusion_sentence": "my balabala helped me balabala"
     },
     {
@@ -14,6 +15,7 @@
         " Facing tremendous amount of stress, I squeezed out every tiny drop of time to learn those language and never thinking of giving up.",
         " At the end of semester, what I gained is a good grade and extensive experience with the language as well as proficient analyzing and troubleshooting ability. "
       ],
+      "intro_sentence": "my fast and adaptive learning compatibility, highly proficient programming ability among various languages",
       "conclusion_sentence": "my extensive experience with Java, Python and web development granted me with both outstanding programming and analytical skill" 
     },
     {
@@ -27,7 +29,8 @@
         " This precious experience will help me in this role by giving a tough and strong attitude",
         " in solving problems when encountering inevitable setbacks."
       ],
-      "conclusion_sentence": "my outgoing character and optimistic attitude towards difficulties can tackle problems effectively."
+      "intro_sentence": "positive attitude towards work and life",
+      "conclusion_sentence": "my outgoing character and optimistic attitude towards difficulties can tackle problems effectively"
     }
   ]
 }
