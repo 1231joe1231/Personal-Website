@@ -13,7 +13,7 @@
         " I did not have any programming background when I entered university.",
         " Therefore, the fastpaced academic life troubles me a lot.",
         " Facing tremendous amount of stress, I squeezed out every tiny drop of time to learn those language and never thinking of giving up.",
-        " At the end of semester, what I gained is a good grade and extensive experience with the language as well as proficient analyzing and troubleshooting ability. "
+        " At the end of semester, what I gained is a good grade, famaliarity with the language as well as proficient analyzing and troubleshooting ability. "
       ],
       "intro_sentence": "my fast and adaptive learning compatibility, highly proficient programming ability among various languages",
       "conclusion_sentence": "my extensive experience with Java, Python and web development granted me with both outstanding programming and analytical skill" 
@@ -31,6 +31,19 @@
       ],
       "intro_sentence": "positive attitude towards work and life",
       "conclusion_sentence": "my outgoing character and optimistic attitude towards difficulties can tackle problems effectively"
+    },
+    {
+      "description": "Meeting at PwC(Interpersonal)",
+      "content": [
+        "As a Junior software developer at PwC Shanghai AC,",
+        " I was responsible for hosting a meeting with a few senior developers and manager at Compliance department to determine the implementation of a secruity feature.",
+        " To get the job done, I carefully sent out invitation email and prepared briefing slides for knowledge transfer.",
+        " The meeting went well and every participant was able to understand the current situation and provided helpful suggestions.",
+        " After the meeting, I implementated the feature and passed the security assessment.",
+        " This task will benefit me in this role by giving me confidence and positive attitude towards challenges in professional workspace."
+      ],
+      "intro_sentence": "experience hosting conference with multiple department coordinators",
+      "conclusion_sentence": "my previous conference experience, empathic communication with clients can deliver crucial information efficiently and accurately"
     }
   ]
 }
