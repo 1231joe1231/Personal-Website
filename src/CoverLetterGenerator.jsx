@@ -187,7 +187,7 @@ function CoverLetter(props) {
 
   function downloadPDF() {
     const doc = makePDF();
-    pdfMake.createPdf(doc).download();
+    pdfMake.createPdf(doc).download(Employer+'.pdf');
   }
 
   return (
