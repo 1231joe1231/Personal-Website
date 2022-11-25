@@ -109,8 +109,8 @@ function CoverLetter(props) {
         {
           text: [
             { text: "Ruixin(Joe) Zhuang\n", fontSize: 24 },
-            "50 Brian Harrison Way, Unit 3707, Scarborough, Ontario, M1P 5J4\n",
-            "joe.zhuang@mail.utoronto.ca|647-469-8666|linkedin.com/in/ruixin-zhuang",
+            "647-469-8666 • joe.zhuang@mail.utoronto.ca\n",
+            "linkedin.com/in/ruixin-zhuang • github.com/1231joe1231",
           ],
           alignment: "center",
         },
