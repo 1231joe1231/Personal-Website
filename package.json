@@ -13,9 +13,9 @@
     "sudoku-dlx": "^1.0.0"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts --openssl-legacy-provider build",
-    "eject": "react-scripts --openssl-legacy-provider eject",
+    "eject": "react-scripts eject",
     "lint": "eslint src/*.js src/*.jsx"
   },
   "eslintConfig": {

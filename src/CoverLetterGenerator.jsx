@@ -222,7 +222,7 @@ function CoverLetter(props) {
           >
             <TextField
               name="FullName"
-              label="Full Name"
+              label="Full name of Contact"
               value={FullName}
               onChange={handleInput}
               inputProps={{
@@ -234,7 +234,7 @@ function CoverLetter(props) {
             />
             <TextField
               name="ShortName"
-              label="Short Name"
+              label="Short name of Contact"
               value={ShortName}
               onChange={handleInput}
               inputProps={{
@@ -246,7 +246,7 @@ function CoverLetter(props) {
             />
             <TextField
               name="Employer"
-              label="Employer"
+              label="Company Name"
               value={Employer}
               onChange={handleInput}
               inputProps={{
