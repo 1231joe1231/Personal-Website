@@ -34,7 +34,7 @@ jobs:
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
          cd /home/ubuntu/Sudoku-Online
-         rm -f /var/www/build
+         rm -rf /var/www/build
          mv build/ /var/www
 
     
