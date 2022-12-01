@@ -13,6 +13,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import HomeIcon from "@material-ui/icons/Home";
 import DescriptionIcon from "@material-ui/icons/Description";
+import ToysIcon from '@material-ui/icons/Toys';
 import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
@@ -72,6 +73,12 @@ export default function ButtonAppBar(props) {
           <ListItem button component={Link} href="/" underline="none">
             <ListItemIcon>
               <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem button component={Link} href="/sudoku" underline="none">
+            <ListItemIcon>
+              <ToysIcon />
             </ListItemIcon>
             <ListItemText primary="Sudoku!" />
           </ListItem>
