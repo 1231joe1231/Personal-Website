@@ -2,18 +2,18 @@ import React from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
-import AppBar from "./Component/AppBar";
+import AppBar from "../Component/AppBar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "./Asset/vfs_fonts";
+import pdfFonts from "../Asset/vfs_fonts";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import * as paragraphs from "./Asset/paragraph.json";
+import * as paragraphs from "../Asset/paragraph.json";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 pdfMake.fonts = {
@@ -35,8 +35,8 @@ function CoverLetter(props) {
   const [Title, setTitle] = useState("");
   const [Anchor, setAnchor] = useState("inspired me to apply for this position.");
   const [Address, setAddress] = useState("");
-  const [BodyPara1, setBodyPara1] = useState(0);
-  const [BodyPara2, setBodyPara2] = useState(0);
+  const [BodyPara1, setBodyPara1] = useState(1);
+  const [BodyPara2, setBodyPara2] = useState(1);
 
   const monthNames = [
     "January",
@@ -191,7 +191,7 @@ function CoverLetter(props) {
   }
 
   return (
-    <div>
+    <div key="1">
       <AppBar title="Cover Letter Generator" />
       <Box
         style={{
@@ -210,7 +210,8 @@ function CoverLetter(props) {
           }}
         >
           <Typography variant="h4">Intro Paragraph</Typography>
-          <Box
+          {/* <Box
+            key="Basic Info Box"
             style={{
               display: "flex",
               alignItems: "center",
@@ -222,50 +223,54 @@ function CoverLetter(props) {
           >
             <TextField
               name="FullName"
+              key="FullName"
               label="Full Name of Contact"
               value={FullName}
               onChange={handleInput}
               inputProps={{
-                autocomplete: "nope",
+                autoComplete: "nope",
                 form: {
-                  autocomplete: "off",
+                  autoComplete: "off",
                 },
               }}
             />
             <TextField
               name="ShortName"
+              key="ShortName"
               label="Short Name of Contact"
               value={ShortName}
               onChange={handleInput}
               inputProps={{
-                autocomplete: "nope",
+                autoComplete: "nope",
                 form: {
-                  autocomplete: "off",
+                  autoComplete: "off",
                 },
               }}
             />
             <TextField
               name="Employer"
+              key="Employer"
               label="Company Name"
               value={Employer}
               onChange={handleInput}
               inputProps={{
-                autocomplete: "nope",
+                autoComplete: "nope",
                 form: {
-                  autocomplete: "off",
+                  autoComplete: "off",
                 },
               }}
               style={{ marginTop: "20px" }}
             />
             <TextField
               name="Title"
+              key="Title"
               label="Job Title"
               value={Title}
               onChange={handleInput}
               inputProps={{
-                autocomplete: "nope",
+                autoComplete: "nope",
                 form: {
-                  autocomplete: "off",
+                  autoComplete: "off",
                 },
               }}
               style={{ marginTop: "20px" }}
@@ -273,13 +278,14 @@ function CoverLetter(props) {
             <TextField
               fullWidth
               name="Address"
+              key="Address"
               label="Company Address"
               value={Address}
               onChange={handleInput}
               inputProps={{
-                autocomplete: "nope",
+                autoComplete: "nope",
                 form: {
-                  autocomplete: "off",
+                  autoComplete: "off",
                 },
               }}
               style={{ marginTop: "20px" }}
@@ -288,18 +294,19 @@ function CoverLetter(props) {
               fullWidth
               multiline
               name="Anchor"
+              key="Anchor"
               label="Anchor Sentence"
               value={Anchor}
               onChange={handleInput}
               inputProps={{
-                autocomplete: "nope",
+                autoComplete: "nope",
                 form: {
-                  autocomplete: "off",
+                  autoComplete: "off",
                 },
               }}
               style={{ marginTop: "20px" }}
             />
-          </Box>
+          </Box> */}
           <Typography variant="h4" style={{ marginTop: "50px" }}>
             Body Paragraph
           </Typography>

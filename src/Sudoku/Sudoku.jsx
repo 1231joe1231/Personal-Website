@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "./Component/AppBar";
+import AppBar from "../Component/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -87,7 +87,7 @@ function Sudoku() {
           <Button variant="contained" color="primary" onClick={solveSudoku}>
             解答
           </Button>
-          <Grid container spacing={2} alignItems="center" alignContent="center" justify="center">
+          <Grid container spacing={2} alignItems="center" alignContent="center" justifyContent="center">
             <Grid item>
               <SpeedIcon style={{transform: "rotateY(180deg)"}}/>
             </Grid>
@@ -112,7 +112,7 @@ function Sudoku() {
         <Grid container className={classes.root} spacing={0}>
           <Grid item xs={12}>
             {sudokuArr.map((row, i) => (
-              <Grid container justify="center" spacing={0} key={i}>
+              <Grid container justifyContent="center" spacing={0} key={i}>
                 {row.map((value, j) => (
                   <Grid key={j} item>
                     {/* TODO: highlighted as a prop, use highlightArr to record */}
