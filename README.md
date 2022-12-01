@@ -1,3 +1,3 @@
 # Personal Website of Joe Zhuang
 
-Personal introduction, technical blog, photography works, and more!
+Brief introduction of who I am, technical blog, photography works, and more!
