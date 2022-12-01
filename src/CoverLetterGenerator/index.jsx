@@ -187,7 +187,7 @@ function CoverLetter(props) {
 
   function downloadPDF() {
     const doc = makePDF();
-    pdfMake.createPdf(doc).download(Employer + ' ' + Title +'.pdf');
+    pdfMake.createPdf(doc).download(Employer + ' ' + Title + '.pdf');
   }
 
   return (
@@ -210,7 +210,7 @@ function CoverLetter(props) {
           }}
         >
           <Typography variant="h4">Intro Paragraph</Typography>
-          {/* <Box
+          <Box
             key="Basic Info Box"
             style={{
               display: "flex",
@@ -306,7 +306,7 @@ function CoverLetter(props) {
               }}
               style={{ marginTop: "20px" }}
             />
-          </Box> */}
+          </Box>
           <Typography variant="h4" style={{ marginTop: "50px" }}>
             Body Paragraph
           </Typography>
