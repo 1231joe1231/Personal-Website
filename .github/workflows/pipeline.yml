@@ -20,7 +20,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-         cd /home/ubuntu/Sudoku-Online
+         cd /home/ubuntu/Personal-Website
          git pull origin main
          git status
          npm run build
@@ -33,7 +33,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-         cd /home/ubuntu/Sudoku-Online
+         cd /home/ubuntu/Personal-Website
          rm -rf /var/www/build
          mv build/ /var/www
 
