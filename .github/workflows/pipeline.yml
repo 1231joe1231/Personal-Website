@@ -41,4 +41,16 @@ jobs:
          rm -rf /var/www/dist
          mv dist/ /var/www
 
-    
+    - name: Start Backend
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+         cd /home/ubuntu/Personal-Website/backend
+         python3 -m venv venv
+         ./venv/Scripts/activate
+         pip install gunicorn flask
+         flask run
