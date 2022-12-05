@@ -7,7 +7,7 @@ User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/Personal-Website/backend
 Environment="PATH=/home/ubuntu/Personal-Website/backend/venv/bin"
-ExecStart=/home/ubuntu/Personal-Website/backend/venv/bin/gunicorn --workers 3 -b 127.0.0.1:5000 wsgi:app
+ExecStart=/home/ubuntu/Personal-Website/backend/venv/bin/gunicorn --workers 3 -b 0.0.0.0:5000 wsgi:app
 
 [Install]
 WantedBy=multi-user.target
