@@ -50,7 +50,4 @@ jobs:
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
          cd /home/ubuntu/Personal-Website/backend
-         python3 -m venv venv
-         ./venv/Scripts/activate
-         pip install gunicorn flask
-         flask run
+         source ./venv/bin/activate

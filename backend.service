@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve myproject
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/Personal-Website/backend
+Environment="PATH=/home/ubuntu/Personal-Website/backend/venv/bin"
+ExecStart=/home/ubuntu/Personal-Website/backend/venv/bin/gunicorn --workers 3 --bind unix:myproject.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
