@@ -19,10 +19,10 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        #  git clean -fd removes any untracked files, which helps to maintain consistency
         script: |
          cd /home/ubuntu/Personal-Website
          git pull origin main
-        #  This removes any untracked files
          git clean -fd
          git status
          cd ./frontend
