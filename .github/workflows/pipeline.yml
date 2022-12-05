@@ -22,6 +22,8 @@ jobs:
         script: |
          cd /home/ubuntu/Personal-Website
          git pull origin main
+        #  This removes any untracked files
+         git clean -fd
          git status
          cd ./frontend
          npm run build
