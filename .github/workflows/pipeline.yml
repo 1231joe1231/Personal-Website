@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
-    - name: Build
+    - name: Build Frontend
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -23,9 +23,10 @@ jobs:
          cd /home/ubuntu/Personal-Website
          git pull origin main
          git status
+         cd ./frontend
          npm run build
 
-    - name: Deploy
+    - name: Deploy Frontend
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -33,8 +34,8 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-         cd /home/ubuntu/Personal-Website
-         rm -rf /var/www/build
-         mv build/ /var/www
+         cd /home/ubuntu/Personal-Website/frontend
+         rm -rf /var/www/dist
+         mv dist/ /var/www
 
     
