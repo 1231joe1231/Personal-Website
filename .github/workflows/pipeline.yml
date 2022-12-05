@@ -26,6 +26,7 @@ jobs:
          git clean -fd
          git status
          cd ./frontend
+         npm i
          npm run build
 
     - name: Deploy Frontend
