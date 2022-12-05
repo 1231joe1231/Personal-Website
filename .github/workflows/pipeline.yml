@@ -23,9 +23,9 @@ jobs:
         script: |
          cd /home/ubuntu/Personal-Website
          git pull origin main
-         git clean -fd
          git status
          cd ./frontend
+         git clean -fd
          npm i
          npm run build
 
