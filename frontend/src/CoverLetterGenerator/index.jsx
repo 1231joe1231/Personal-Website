@@ -25,7 +25,7 @@ pdfMake.fonts = {
   },
 };
 
-function CoverLetter(props) {
+function CoverLetter() {
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up("md"));
   const [file, setFile] = useState(null);
@@ -33,7 +33,9 @@ function CoverLetter(props) {
   const [ShortName, setShortName] = useState("");
   const [Employer, setEmployer] = useState("");
   const [Title, setTitle] = useState("");
-  const [Anchor, setAnchor] = useState("inspired me to apply for this position.");
+  const [Anchor, setAnchor] = useState(
+    "inspired me to apply for this position."
+  );
   const [Address, setAddress] = useState("");
   const [BodyPara1, setBodyPara1] = useState(1);
   const [BodyPara2, setBodyPara2] = useState(1);
@@ -187,7 +189,7 @@ function CoverLetter(props) {
 
   function downloadPDF() {
     const doc = makePDF();
-    pdfMake.createPdf(doc).download(Employer + ' ' + Title + '.pdf');
+    pdfMake.createPdf(doc).download(Employer + " " + Title + ".pdf");
   }
 
   return (

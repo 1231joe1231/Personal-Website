@@ -13,8 +13,9 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import HomeIcon from "@material-ui/icons/Home";
 import DescriptionIcon from "@material-ui/icons/Description";
-import ToysIcon from '@material-ui/icons/Toys';
+import ToysIcon from "@material-ui/icons/Toys";
 import Link from "@material-ui/core/Link";
+import * as PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
   },
 }));
+
+ButtonAppBar.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default function ButtonAppBar(props) {
   const classes = useStyles();

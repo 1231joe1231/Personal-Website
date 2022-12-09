@@ -1,1 +1,30 @@
-{}
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "prettier/prettier": ["error", { "singleQuote": false }],
+    "react/jsx-max-props-per-line": [2, { "maximum": 1, "when": "multiline" }],
+    "react/jsx-indent-props": [2, 2]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

@@ -1,13 +1,13 @@
 {
   "body_para": [
     {
-      "description" : "Example body paragraph",
+      "description": "Example body paragraph",
       "content": "Example body paragraph balabala",
       "intro_sentence": "Example Noun for intro paragraph",
       "conclusion_sentence": "my balabala helped me balabala"
     },
     {
-      "description":"Java/Python School",
+      "description": "Java/Python School",
       "content": [
         "During my school years, I learned Java and Python at the beginning of my first year.",
         " I did not have any programming background when I entered university.",
@@ -16,7 +16,7 @@
         " At the end of semester, what I gained is a good grade, famaliarity with the language as well as proficient analyzing and troubleshooting ability. "
       ],
       "intro_sentence": "my fast and adaptive learning compatibility, highly proficient programming ability among various languages",
-      "conclusion_sentence": "my extensive experience with Java, Python and web development granted me with both outstanding programming and analytical skill" 
+      "conclusion_sentence": "my extensive experience with Java, Python and web development granted me with both outstanding programming and analytical skill"
     },
     {
       "description": "Animation Club(Interpersonal)",

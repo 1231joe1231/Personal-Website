@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AppBar from "../Component/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-// import Paper from "@material-ui/core/Paper";
-// import InputLabel from "@material-ui/core/InputLabel";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import FormHelperText from "@material-ui/core/FormHelperText";
-// import FormControl from "@material-ui/core/FormControl";
-// import Select from "@material-ui/core/Select";
 import Slider from "@material-ui/core/Slider";
 import SpeedIcon from "@material-ui/icons/Speed";
 import Grid from "@material-ui/core/Grid";
@@ -33,7 +25,7 @@ function Sudoku() {
 
   const generateSudoku = () => {
     sudokuLib = sudokuLibGetter();
-    var str = sudokuLib.generate(81-difficulty);
+    var str = sudokuLib.generate(81 - difficulty);
     setSudokuStr(str);
     setSudokuArr(sudokuLib.board_string_to_grid(str));
   };
@@ -74,22 +66,28 @@ function Sudoku() {
 
   return (
     <div>
-      <AppBar title="Sudoku!"/>
+      <AppBar title="Sudoku!" />
       <Container maxWidth="md">
         <Box
           style={{
             display: "flex",
             justifyContent: "space-between",
             padding: "20px",
-            marginTop: "20px"
+            marginTop: "20px",
           }}
         >
           <Button variant="contained" color="primary" onClick={solveSudoku}>
             解答
           </Button>
-          <Grid container spacing={2} alignItems="center" alignContent="center" justifyContent="center">
+          <Grid
+            container
+            spacing={2}
+            alignItems="center"
+            alignContent="center"
+            justifyContent="center"
+          >
             <Grid item>
-              <SpeedIcon style={{transform: "rotateY(180deg)"}}/>
+              <SpeedIcon style={{ transform: "rotateY(180deg)" }} />
             </Grid>
             <Grid item className={classes.slider}>
               <Slider
@@ -170,8 +168,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("sm")]: {
       width: "300px",
-    }
-  }
+    },
+  },
 }));
 
 // const RenderRow = (props) => {
