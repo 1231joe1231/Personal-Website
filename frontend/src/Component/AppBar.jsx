@@ -76,6 +76,12 @@ export default function ButtonAppBar(props) {
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
+          <ListItem button component={Link} href="/techblog" underline="none">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Tech blog" />
+          </ListItem>
           <ListItem button component={Link} href="/sudoku" underline="none">
             <ListItemIcon>
               <ToysIcon />

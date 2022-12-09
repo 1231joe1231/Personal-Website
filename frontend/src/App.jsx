@@ -4,6 +4,7 @@ import Sudoku from "./Sudoku/Sudoku";
 import CoverLetter from "./CoverLetterGenerator";
 import PageNotFound from "./NotFound";
 import Home from "./Home";
+import TechBlog from "./TechBlog";
 
 export default function App() {
   return (
@@ -11,6 +12,9 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/techblog">
+          <TechBlog />
         </Route>
         <Route path="/sudoku">
           <Sudoku />
