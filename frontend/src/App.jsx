@@ -13,7 +13,7 @@ export default function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/techblog">
+        <Route path="/techblog">
           <TechBlog />
         </Route>
         <Route path="/sudoku">
