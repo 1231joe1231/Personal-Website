@@ -1,52 +1,48 @@
 name: Build and deploy
 
-on: 
- push:
-    branches: [ main ]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    
-    - name: Build Frontend
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        #  git clean -fd removes any untracked files, which helps to maintain consistency
-        script: |
-         cd /home/ubuntu/Personal-Website
-         git pull origin main
-         git status
-         cd ./frontend
-         git clean -fd
-         npm i
-         npm run build
+      - uses: actions/checkout@v1
 
-    - name: Deploy Frontend
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-         cd /home/ubuntu/Personal-Website/frontend
-         rm -rf /var/www/dist
-         mv dist/ /var/www
+      - name: Build Frontend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          #  git clean -fd removes any untracked files, which helps to maintain consistency
+          script: |
+            cd /home/ubuntu/Personal-Website
+            git pull
+            cd ./frontend
+            npm run build
 
-    - name: Start Backend
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-         sudo systemctl restart personal-website-backend
+      - name: Deploy Frontend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/Personal-Website/frontend
+            rm -rf /var/www/dist
+            mv dist/ /var/www
+
+      - name: Start Backend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart personal-website-backend
