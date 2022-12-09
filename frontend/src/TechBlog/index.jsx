@@ -12,9 +12,13 @@ const backend = axios.create({
 export default function TechBlog() {
   const [notesArr, setNotesArr] = useState([]);
 
+  const fetchNotes = () => {
+    backend.get("/notes").then((response) => setNotesArr(response.data));
+  };
+
   useEffect(() => {
     // fetch notes from backend
-    backend.get("/notes").then((response) => setNotesArr(response.data));
+    fetchNotes();
   }, []);
 
   const cards = () => {
