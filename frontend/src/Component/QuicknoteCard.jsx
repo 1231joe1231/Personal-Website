@@ -4,6 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import * as PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
+import ReactMarkdown from "react-markdown";
 
 const useStyles = makeStyles({
   root: {
@@ -32,9 +33,7 @@ export default function QuicknoteCard(props) {
         {props.title}
       </Typography>
       <Divider variant="fullWidth" />
-      <Typography variant="body2" color="textSecondary" component="p">
-        {props.content}
-      </Typography>
+      <ReactMarkdown>{props.content}</ReactMarkdown>
     </Paper>
   );
 }
