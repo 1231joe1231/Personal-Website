@@ -217,7 +217,6 @@ function CoverLetter(props) {
               alignItems: "center",
               justifyContent: "space-between",
               flexWrap: "wrap",
-              marginTop: "20px",
               width: "65%",
             }}
           >
@@ -233,6 +232,7 @@ function CoverLetter(props) {
                   autoComplete: "off",
                 },
               }}
+              style={{ marginTop: "20px" }}
             />
             <TextField
               name="ShortName"
@@ -246,6 +246,7 @@ function CoverLetter(props) {
                   autoComplete: "off",
                 },
               }}
+              style={{ marginTop: "20px" }}
             />
             <TextField
               name="Employer"
@@ -314,12 +315,12 @@ function CoverLetter(props) {
             style={{
               display: "flex",
               flexDirection: "row",
+              flexWrap: "wrap",
               width: "100%",
               justifyContent: "space-evenly",
-              marginTop: "20px",
             }}
           >
-            <FormControl style={{ minWidth: 300 }}>
+            <FormControl style={{ minWidth: 300, marginTop: "20px" }}>
               <InputLabel id="body_para_1">Body Paragraph 1</InputLabel>
               <Select
                 labelId="body_para_1"
@@ -327,6 +328,7 @@ function CoverLetter(props) {
                 name="BodyPara1"
                 value={BodyPara1}
                 onChange={handleInput}
+                style={{ marginTop: "20px" }}
               >
                 {paragraphs.body_para.map((item, key) => {
                   return key === 0 ? null : (
@@ -335,7 +337,7 @@ function CoverLetter(props) {
                 })}
               </Select>
             </FormControl>
-            <FormControl style={{ minWidth: 300 }}>
+            <FormControl style={{ minWidth: 300, marginTop: "20px" }}>
               <InputLabel id="body_para_2">Body Paragraph 2</InputLabel>
               <Select
                 labelId="body_para_2"
@@ -343,6 +345,7 @@ function CoverLetter(props) {
                 name="BodyPara2"
                 value={BodyPara2}
                 onChange={handleInput}
+                style={{ marginTop: "20px" }}
               >
                 {paragraphs.body_para.map((item, key) => {
                   return key === 0 ? null : (
