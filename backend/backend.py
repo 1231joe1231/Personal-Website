@@ -6,7 +6,7 @@ from flask_cors import CORS
 from utility import insert_note_data
 
 app = Flask(__name__)
-CORS(app, origins='http://localhost:3000')
+CORS(app, origins='http://155.138.129.234:3000')
 
 
 def get_db_connection():
