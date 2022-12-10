@@ -1,5 +1,4 @@
 import sqlite3
-import markdown
 from flask import Flask, request, abort, make_response
 from flask_cors import CORS
 
