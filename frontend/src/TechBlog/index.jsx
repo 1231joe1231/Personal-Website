@@ -32,7 +32,11 @@ export default function TechBlog() {
         }}
       >
         {notesArr.map((note) => (
-          <QuicknoteCard title="lorem" content={note.content} key={note.id} />
+          <QuicknoteCard
+            title={note.title}
+            content={note.content}
+            key={note.id}
+          />
         ))}
       </Box>
     );
