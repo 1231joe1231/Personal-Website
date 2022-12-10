@@ -1,11 +1,11 @@
 import sqlite3
 from flask import Flask, request, abort, make_response
-from flask_cors import CORS
+# from flask_cors import CORS
 
 from utility import insert_note_data
 
 app = Flask(__name__)
-CORS(app, origins='http://155.138.129.234')
+# CORS(app, origins='http://155.138.129.234')
 
 
 def get_db_connection():

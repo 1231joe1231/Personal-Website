@@ -4,9 +4,10 @@ import QuicknoteCard from "../Component/QuicknoteCard";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
+import { BACKEND_URL } from "../env";
 
 const backend = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: BACKEND_URL,
 });
 
 export default function TechBlog() {
