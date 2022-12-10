@@ -1,3 +1,4 @@
+import logging
 import sqlite3
 from flask import Flask, request, abort, make_response
 # from flask_cors import CORS
@@ -50,3 +51,6 @@ def index():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
