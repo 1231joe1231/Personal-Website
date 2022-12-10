@@ -38,10 +38,7 @@ def index():
         print("title is %s, content is %s" % (title, content))
         if not len(title) == 0 and len(content) == 0:
             abort(400)
-        try:
-            insert_note_data(conn, title, content)
-        except sqlite3.OperationalError:
-            abort(500)
+        insert_note_data(conn, title, content)
         conn.commit()
         conn.close()
         response = make_response()
