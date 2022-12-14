@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,6 +14,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import HomeIcon from "@material-ui/icons/Home";
 import DescriptionIcon from "@material-ui/icons/Description";
 import ToysIcon from "@material-ui/icons/Toys";
+import NoteIcon from "@material-ui/icons/Note";
 import Link from "@material-ui/core/Link";
 import * as PropTypes from "prop-types";
 
@@ -38,7 +39,7 @@ ButtonAppBar.propTypes = {
 
 export default function ButtonAppBar(props) {
   const classes = useStyles();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={classes.root}>
@@ -83,7 +84,7 @@ export default function ButtonAppBar(props) {
           </ListItem>
           <ListItem button component={Link} href="/techblog" underline="none">
             <ListItemIcon>
-              <HomeIcon />
+              <NoteIcon />
             </ListItemIcon>
             <ListItemText primary="Tech blog" />
           </ListItem>
