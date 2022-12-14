@@ -77,6 +77,8 @@ export default function TechBlog() {
       .then(() => {
         showAlert("Note added successfully!", "success");
         handleClose();
+        setNoteContent("");
+        setNoteTitle("");
         fetchNotes();
       })
       .catch((error) => {
@@ -123,13 +125,16 @@ export default function TechBlog() {
           </Fab>
         )}
         <Snackbar
+          anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
           open={isSnackbarOpen}
           onClose={handleSnackbarClose}
           autoHideDuration={6000}
         >
-          <Alert onClose={handleClose} severity={alertSeverity}>
-            {alertMsg}
-          </Alert>
+          <div>
+            <Alert onClose={handleClose} severity={alertSeverity}>
+              {alertMsg}
+            </Alert>
+          </div>
         </Snackbar>
         <Dialog
           open={isDialogOpen}
@@ -144,7 +149,13 @@ export default function TechBlog() {
               Add a new note! (Content supports markdown, drafts will be auto
               saved!)
             </DialogContentText>
-            <Box style={{ display: "flex", justifyContent: "space-between" }}>
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "10px",
+              }}
+            >
               <Paper
                 className={classes.paper}
                 elevation={5}
