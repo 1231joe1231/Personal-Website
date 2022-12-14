@@ -3,6 +3,8 @@ import AppBar from "../Component/AppBar";
 import QuicknoteCard from "../Component/QuicknoteCard";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 import axios from "axios";
 import { BACKEND_URL } from "../env";
 
@@ -12,14 +14,20 @@ const backend = axios.create({
 
 export default function TechBlog() {
   const [notesArr, setNotesArr] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const fetchNotes = () => {
     backend.get("/notes").then((response) => setNotesArr(response.data));
   };
 
+  const checkAdmin = () => {
+    setIsAdmin(localStorage.getItem("AdminToken") === "114514");
+  };
+
   useEffect(() => {
     // fetch notes from backend
     fetchNotes();
+    checkAdmin();
   }, []);
 
   const cards = () => {
@@ -39,6 +47,11 @@ export default function TechBlog() {
             key={note.id}
           />
         ))}
+        {isAdmin && (
+          <Fab color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        )}
       </Box>
     );
   };
