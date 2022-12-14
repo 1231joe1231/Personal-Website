@@ -33,8 +33,8 @@ def index():
 
         return notes
     elif request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
+        title = request.json['title']
+        content = request.json['content']
         print("title is %s, content is %s" % (title, content))
         if not len(title) == 0 and len(content) == 0:
             abort(400)
