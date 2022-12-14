@@ -1,9 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Divider from "@material-ui/core/Divider";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@mui/styles";
+import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 import * as PropTypes from "prop-types";
-import Paper from "@material-ui/core/Paper";
+import Paper from "@mui/material/Paper";
 import ReactMarkdown from "react-markdown";
 // import MuiMarkdown from "mui-markdown";
 

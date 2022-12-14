@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import AppBar from "../Component/AppBar";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import Slider from "@material-ui/core/Slider";
-import SpeedIcon from "@material-ui/icons/Speed";
-import Grid from "@material-ui/core/Grid";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import SpeedIcon from "@mui/icons-material/Speed";
+import Grid from "@mui/material/Grid";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
+import { useTheme } from "@mui/material/styles";
 import { sudokuLibConstructor } from "./Sudoku-lib";
 
 function Sudoku() {
@@ -137,7 +138,7 @@ function Sudoku() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -146,27 +147,27 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     wordWrap: "break-word",
-    [theme.breakpoints.down("sm")]: {
+    [useTheme().breakpoints.down("md")]: {
       fontSize: "15px",
       height: "8vw",
       width: "8vw",
     },
-    [theme.breakpoints.up("md")]: {
+    [useTheme().breakpoints.up("md")]: {
       fontSize: "25px",
       height: "60px",
       width: "60px",
     },
-    [theme.breakpoints.up("lg")]: {
+    [useTheme().breakpoints.up("lg")]: {
       fontSize: "25px",
       height: "60px",
       width: "60px",
     },
   },
   slider: {
-    [theme.breakpoints.down("sm")]: {
+    [useTheme().breakpoints.down("md")]: {
       width: "200px",
     },
-    [theme.breakpoints.up("sm")]: {
+    [useTheme().breakpoints.up("sm")]: {
       width: "300px",
     },
   },

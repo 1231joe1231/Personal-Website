@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Drawer from "@material-ui/core/Drawer";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import HomeIcon from "@material-ui/icons/Home";
-import DescriptionIcon from "@material-ui/icons/Description";
-import ToysIcon from "@material-ui/icons/Toys";
-import NoteIcon from "@material-ui/icons/Note";
-import Link from "@material-ui/core/Link";
+import { makeStyles } from "@mui/styles";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Drawer from "@mui/material/Drawer";
+import ListItemText from "@mui/material/ListItemText";
+import ListSubheader from "@mui/material/ListSubheader";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import HomeIcon from "@mui/icons-material/Home";
+import DescriptionIcon from "@mui/icons-material/Description";
+import ToysIcon from "@mui/icons-material/Toys";
+import NoteIcon from "@mui/icons-material/Note";
+import Link from "@mui/material/Link";
 import * as PropTypes from "prop-types";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: 20,
   },
   title: {
     flexGrow: 1,
@@ -53,6 +53,7 @@ export default function ButtonAppBar(props) {
             onClick={() => {
               setIsOpen(!isOpen);
             }}
+            size="large"
           >
             <MenuIcon />
           </IconButton>

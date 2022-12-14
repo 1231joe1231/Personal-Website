@@ -1,18 +1,18 @@
 import React from "react";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import AppBar from "../Component/AppBar";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "../Asset/vfs_fonts";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import * as paragraphs from "../Asset/paragraph.json";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -391,7 +391,7 @@ function CoverLetter() {
             title="PDF preview"
             src={file}
             style={{
-              height: desktop ? "90vh" : "70vh",
+              height: desktop ? "88vh" : "70vh",
               width: desktop ? "45vw" : "90vw",
             }}
           ></iframe>

@@ -1,35 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@mui/styles";
+import Paper from "@mui/material/Paper";
 import ReactMarkdown from "react-markdown";
 import AppBar from "../Component/AppBar";
 import QuicknoteCard from "../Component/QuicknoteCard";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import Snackbar from "@material-ui/core/Snackbar";
-import TextField from "@material-ui/core/TextField";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import Divider from "@material-ui/core/Divider";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Typography from "@material-ui/core/Typography";
-import MuiAlert from "@material-ui/lab/Alert";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import Snackbar from "@mui/material/Snackbar";
+import TextField from "@mui/material/TextField";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import Divider from "@mui/material/Divider";
+import DialogTitle from "@mui/material/DialogTitle";
+import Typography from "@mui/material/Typography";
+import MuiAlert from "@mui/material/Alert";
+import Masonry from "@mui/lab/Masonry";
 import axios from "axios";
 import { BACKEND_URL } from "../env";
 
-const useStyles = makeStyles((theme) => ({
-  fab: {
-    position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
+const useStyles = makeStyles(() => ({
   paper: {
-    padding: theme.spacing(2),
+    padding: 20,
   },
 }));
 
@@ -107,14 +103,7 @@ export default function TechBlog() {
   const cards = () => {
     return (
       <Box>
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "20px",
-            marginTop: "20px",
-          }}
-        >
+        <Masonry columns={4} spacing={2} style={{ marginTop: "10px" }}>
           {notesArr.map((note) => (
             <QuicknoteCard
               title={note.title}
@@ -122,13 +111,13 @@ export default function TechBlog() {
               key={note.id}
             />
           ))}
-        </Box>
+        </Masonry>
         {isAdmin && (
           <Fab
             color="primary"
             aria-label="add"
-            className={classes.fab}
             onClick={handleClickOpen}
+            style={{ position: "absolute", right: "20px", bottom: "20px" }}
           >
             <AddIcon />
           </Fab>
