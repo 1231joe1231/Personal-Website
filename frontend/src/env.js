@@ -4,4 +4,4 @@
 export const BACKEND_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000"
-    : "https://www.joe-zhuang.com/api";
+    : "https://joe-zhuang.com/api";
