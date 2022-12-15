@@ -1,12 +1,19 @@
 import logging
+import time
+import os
 import sqlite3
-from flask import Flask, request, abort, make_response
+from flask import Flask, request, abort, jsonify
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
 
-from utility import insert_note_data
+from utility import insert_note_data, insert_image_data
 
 app = Flask(__name__)
 CORS(app, origins='http://localhost:3000')
+image_folder = './images'
+cwd = os.getcwd()
+host = "https://joe-zhuang.com"
+ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
 
 
 def get_db_connection():
@@ -16,7 +23,7 @@ def get_db_connection():
 
 
 @app.route('/notes', methods=['GET', 'POST'])
-def index():
+def notes():
     conn = get_db_connection()
 
     if request.method == 'GET':
@@ -37,13 +44,45 @@ def index():
         content = request.json['content']
         print("title is %s, content is %s" % (title, content))
         if not len(title) == 0 and len(content) == 0:
-            abort(400)
+            abort(400, 'Bad Request: empty title or content')
         insert_note_data(conn, title, content)
         conn.commit()
         conn.close()
-        response = make_response()
-        response.status_code = 200
+        response = jsonify({"message": "This note is added successfully!"})
         return response
+
+
+def get_extension(filename):
+    return filename.rsplit('.', 1)[1].lower()
+
+
+def allowed_file(filename):
+    return '.' in filename and get_extension(filename) in ALLOWED_EXTENSIONS
+
+
+@app.route('/images/upload', methods=['POST'])
+def images():
+    if request.method == 'POST':
+        if 'image' not in request.files:
+            abort(400, 'Bad Request: no file attached')
+        uploaded_file = request.files['image']
+        if uploaded_file.filename == '':
+            abort(400, 'Bad Request: file is empty')
+        if uploaded_file and allowed_file(uploaded_file.filename):
+            filename = secure_filename(uploaded_file.filename)
+            full_save_path = os.path.join(
+                cwd, image_folder, filename)
+            title = request.form['title']
+            if len(title) == 0:
+                title = time.strftime("%H:%M:%S") + '.'+get_extension(filename)
+            uploaded_file.save(full_save_path)
+            uploaded_file.close()
+            hosted_image_path = host + '/' + filename
+            conn = get_db_connection()
+            insert_image_data(conn, title, hosted_image_path)
+            conn.commit()
+            conn.close()
+            return jsonify({"message": "This image is uploaded successfully", "path": hosted_image_path})
 
 
 if __name__ == "__main__":

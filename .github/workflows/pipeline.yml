@@ -48,4 +48,6 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            cd /home/ubuntu/Personal-Website/backend
+            pip install -r requirement.txt
             sudo systemctl restart personal-website-backend
