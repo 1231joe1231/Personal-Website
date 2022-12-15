@@ -10,7 +10,7 @@ from utility import insert_note_data, insert_image_data
 
 app = Flask(__name__)
 CORS(app, origins='http://localhost:3000')
-image_folder = './images'
+image_folder = 'images'
 cwd = os.getcwd()
 host = "https://joe-zhuang.com"
 ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
@@ -71,8 +71,10 @@ def images():
             abort(400, 'Bad Request: file is empty')
         if uploaded_file and allowed_file(uploaded_file.filename):
             filename = secure_filename(uploaded_file.filename)
+            print("cwd is "+cwd)
             full_save_path = os.path.join(
                 cwd, image_folder, filename)
+            print("full_save_path is "+full_save_path)
             title = request.form['title']
             if len(title) == 0:
                 title = time.strftime("%H:%M:%S") + '.'+get_extension(filename)
