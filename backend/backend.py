@@ -63,7 +63,7 @@ def allowed_file(filename):
 @app.route('/images/upload', methods=['POST'])
 def images():
     if request.method == 'POST':
-        print(request.files, flush=True)
+        print(request, flush=True)
         if 'image' not in request.files:
             abort(400, 'Bad Request: no file attached')
         uploaded_file = request.files['image']
