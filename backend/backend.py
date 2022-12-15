@@ -10,10 +10,18 @@ from utility import insert_note_data, insert_image_data
 
 app = Flask(__name__)
 CORS(app, origins='http://localhost:3000')
-image_folder = 'images'
+image_folder = None
 cwd = os.getcwd()
 host = "https://joe-zhuang.com"
+
 ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
+
+if os.environ['FLASK_ENV'] == 'dev':
+    print('Running in development mode')
+    image_folder = 'images'
+else:
+    print('Running in production mode')
+    image_folder = '/home/ubuntu/images'
 
 
 def get_db_connection():
