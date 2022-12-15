@@ -49,5 +49,5 @@ jobs:
           KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/Personal-Website/backend
-            pip install -r requirement.txt
+            pip install -r requirements.txt
             sudo systemctl restart personal-website-backend
