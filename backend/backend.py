@@ -17,10 +17,10 @@ host = "https://joe-zhuang.com"
 ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
 
 if os.environ['FLASK_ENV'] == 'dev':
-    print('Running in development mode')
+    print('Running in development mode', flush=True)
     image_folder = 'images'
 else:
-    print('Running in production mode')
+    print('Running in production mode', flush=True)
     image_folder = '/home/ubuntu/images'
 
 
@@ -79,10 +79,10 @@ def images():
             abort(400, 'Bad Request: file is empty')
         if uploaded_file and allowed_file(uploaded_file.filename):
             filename = secure_filename(uploaded_file.filename)
-            print("cwd is "+cwd)
+            print("cwd is "+cwd, flush=True)
             full_save_path = os.path.join(
                 cwd, image_folder, filename)
-            print("full_save_path is "+full_save_path)
+            print("full_save_path is "+full_save_path, flush=True)
             title = request.form['title']
             if len(title) == 0:
                 title = time.strftime("%H:%M:%S") + '.'+get_extension(filename)
