@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import Paper from "@mui/material/Paper";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
+import MarkdownRender from "../Component/MarkdownRender";
 import AppBar from "../Component/AppBar";
 import QuicknoteCard from "../Component/QuicknoteCard";
 import Container from "@mui/material/Container";
@@ -193,14 +194,7 @@ export default function TechBlog() {
                   {noteTitle}
                 </Typography>
                 <Divider />
-                <ReactMarkdown
-                  style={{
-                    inlineSize: "min-content",
-                    overflowWrap: "break-word",
-                  }}
-                >
-                  {noteContent}
-                </ReactMarkdown>
+                <MarkdownRender input={noteContent} />
               </Paper>
             </Box>
           </DialogContent>

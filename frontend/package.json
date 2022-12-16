@@ -19,6 +19,9 @@
     "react-scripts": "4.0.3",
     "sudoku-dlx": "^1.0.0"
   },
+  "overrides": {
+    "react-error-overlay": "6.0.9"
+  },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "BUILD_PATH='./dist' react-scripts --openssl-legacy-provider build",
