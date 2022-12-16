@@ -88,7 +88,7 @@ def images():
                 title = time.strftime("%H:%M:%S") + '.'+get_extension(filename)
             uploaded_file.save(full_save_path)
             uploaded_file.close()
-            hosted_image_path = host + '/' + filename
+            hosted_image_path = host + '/images/' + filename
             conn = get_db_connection()
             insert_image_data(conn, title, hosted_image_path)
             conn.commit()
