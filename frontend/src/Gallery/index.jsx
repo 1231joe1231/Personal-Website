@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
+import CardMedia from "@mui/material/CardMedia";
 import Dialog from "@mui/material/Dialog";
 import Snackbar from "@mui/material/Snackbar";
 import DialogActions from "@mui/material/DialogActions";
@@ -12,6 +13,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import MuiAlert from "@mui/material/Alert";
+import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -32,8 +34,8 @@ export default function Gallery() {
   const [isSnackbarOpen, setIsSnackBarOpen] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
   const [alertSeverity, setAlertSeverity] = useState("");
-  const [imageTitle, setimageTitle] = useState("");
-  const [imageSourec, setImageSource] = useState("");
+  const [imageTitle, setImageTitle] = useState("");
+  const [image, setImage] = useState(null);
 
   const handleClickOpen = () => {
     setIsDialogOpen(true);
@@ -57,15 +59,22 @@ export default function Gallery() {
     setIsSnackBarOpen(true);
   };
 
+  const handleFileChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("title", imageTitle);
     backend
-      .post("/images", { title: imageTitle, image: imageSourec })
+      .post("/images", formData)
       .then(() => {
         showAlert("Image added successfully!", "success");
         handleClose();
-        setimageTitle("");
-        setImageSource("");
+        setImageTitle("");
+        setImage("");
         fetchImages();
       })
       .catch((error) => {
@@ -136,12 +145,41 @@ export default function Gallery() {
           maxWidth="lg"
           fullWidth
         >
-          <DialogTitle id="form-dialog-title">Add a note</DialogTitle>
+          <DialogTitle id="form-dialog-title">Upload an image</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Add a new note! (Content supports markdown, drafts will be auto
-              saved!)
+              This pic definitely looks good~
             </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="title"
+              label="Title of the image"
+              fullWidth
+              value={imageTitle}
+              onChange={(e) => setImageTitle(e.target.value)}
+            />
+            <input
+              accept="image/*"
+              style={{ display: "none" }}
+              id="raised-button-file"
+              multiple
+              type="file"
+              onChange={handleFileChange}
+            />
+            <label htmlFor="raised-button-file">
+              <Button variant="contained" component="span">
+                Upload
+              </Button>
+            </label>
+            {image && (
+              <CardMedia
+                component="img"
+                alt="Uploaded image"
+                image={URL.createObjectURL(image)}
+                title="Uploaded image"
+              />
+            )}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">

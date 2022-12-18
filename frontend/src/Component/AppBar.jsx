@@ -11,6 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import CollectionsIcon from "@mui/icons-material/Collections";
 import HomeIcon from "@mui/icons-material/Home";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ToysIcon from "@mui/icons-material/Toys";
@@ -73,7 +74,7 @@ export default function ButtonAppBar(props) {
           className={classes.list}
           subheader={
             <ListSubheader component="div" id="nested-list-subheader">
-              Pages
+              Welcome to my site!
             </ListSubheader>
           }
         >
@@ -91,7 +92,7 @@ export default function ButtonAppBar(props) {
           </ListItem>
           <ListItem component={Link} href="/gallery" underline="none">
             <ListItemIcon>
-              <NoteIcon />
+              <CollectionsIcon />
             </ListItemIcon>
             <ListItemText primary="Gallery" />
           </ListItem>
