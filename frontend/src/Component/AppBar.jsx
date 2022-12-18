@@ -77,30 +77,31 @@ export default function ButtonAppBar(props) {
             </ListSubheader>
           }
         >
-          <ListItem button component={Link} href="/" underline="none">
+          <ListItem component={Link} href="/" underline="none">
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button component={Link} href="/techblog" underline="none">
+          <ListItem component={Link} href="/techblog" underline="none">
             <ListItemIcon>
               <NoteIcon />
             </ListItemIcon>
             <ListItemText primary="Tech blog" />
           </ListItem>
-          <ListItem button component={Link} href="/sudoku" underline="none">
+          <ListItem component={Link} href="/gallery" underline="none">
+            <ListItemIcon>
+              <NoteIcon />
+            </ListItemIcon>
+            <ListItemText primary="Gallery" />
+          </ListItem>
+          <ListItem component={Link} href="/sudoku" underline="none">
             <ListItemIcon>
               <ToysIcon />
             </ListItemIcon>
             <ListItemText primary="Sudoku!" />
           </ListItem>
-          <ListItem
-            button
-            component={Link}
-            href="/coverletter"
-            underline="none"
-          >
+          <ListItem component={Link} href="/coverletter" underline="none">
             <ListItemIcon>
               <DescriptionIcon />
             </ListItemIcon>

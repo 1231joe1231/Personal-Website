@@ -103,118 +103,114 @@ export default function TechBlog() {
     checkAdmin();
   }, []);
 
-  const cards = () => {
-    return (
-      <Box>
-        <Masonry columns={4} spacing={2} style={{ marginTop: "10px" }}>
-          {notesArr.map((note) => (
-            <QuicknoteCard
-              title={note.title}
-              content={note.content}
-              key={note.id}
-            />
-          ))}
-        </Masonry>
-        {isAdmin && (
-          <Fab
-            color="primary"
-            aria-label="add"
-            onClick={handleClickOpen}
-            style={{ position: "absolute", right: "20px", bottom: "20px" }}
-          >
-            <AddIcon />
-          </Fab>
-        )}
-        <Snackbar
-          anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
-          open={isSnackbarOpen}
-          onClose={handleSnackbarClose}
-          autoHideDuration={6000}
-        >
-          <div>
-            <Alert onClose={handleClose} severity={alertSeverity}>
-              {alertMsg}
-            </Alert>
-          </div>
-        </Snackbar>
-        <Dialog
-          open={isDialogOpen}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-          maxWidth="lg"
-          fullWidth
-        >
-          <DialogTitle id="form-dialog-title">Add a note</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Add a new note! (Content supports markdown, drafts will be auto
-              saved!)
-            </DialogContentText>
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "10px",
-              }}
-            >
-              <Paper
-                className={classes.paper}
-                elevation={5}
-                style={{ flex: "1", marginRight: "10px" }}
-              >
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="title"
-                  label="Title of the note"
-                  fullWidth
-                  value={noteTitle}
-                  onChange={(e) => setNoteTitle(e.target.value)}
-                />
-                <TextField
-                  id="content"
-                  label="Content of the note"
-                  margin="dense"
-                  multiline
-                  fullWidth
-                  value={noteContent}
-                  onChange={(e) => setNoteContent(e.target.value)}
-                />
-              </Paper>
-              <Paper
-                className={classes.paper}
-                elevation={5}
-                style={{ flex: "1", marginLeft: "10px" }}
-              >
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  style={{ minHeight: "1.35em" }}
-                >
-                  {noteTitle}
-                </Typography>
-                <Divider />
-                <MarkdownRender input={noteContent} />
-              </Paper>
-            </Box>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={handleSubmit} color="primary">
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </Box>
-    );
-  };
-
   return (
     <div>
       <AppBar title="Tech blog" />
-      <Container>{cards()}</Container>
+      <Container>
+        <Box>
+          <Masonry columns={4} spacing={2} style={{ marginTop: "10px" }}>
+            {notesArr.map((note) => (
+              <QuicknoteCard
+                title={note.title}
+                content={note.content}
+                key={note.id}
+              />
+            ))}
+          </Masonry>
+          {isAdmin && (
+            <Fab
+              color="primary"
+              aria-label="add"
+              onClick={handleClickOpen}
+              style={{ position: "absolute", right: "20px", bottom: "20px" }}
+            >
+              <AddIcon />
+            </Fab>
+          )}
+          <Snackbar
+            anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+            open={isSnackbarOpen}
+            onClose={handleSnackbarClose}
+            autoHideDuration={6000}
+          >
+            <div>
+              <Alert onClose={handleClose} severity={alertSeverity}>
+                {alertMsg}
+              </Alert>
+            </div>
+          </Snackbar>
+          <Dialog
+            open={isDialogOpen}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+            maxWidth="lg"
+            fullWidth
+          >
+            <DialogTitle id="form-dialog-title">Add a note</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Add a new note! (Content supports markdown, drafts will be auto
+                saved!)
+              </DialogContentText>
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "10px",
+                }}
+              >
+                <Paper
+                  className={classes.paper}
+                  elevation={5}
+                  style={{ flex: "1", marginRight: "10px" }}
+                >
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="title"
+                    label="Title of the note"
+                    fullWidth
+                    value={noteTitle}
+                    onChange={(e) => setNoteTitle(e.target.value)}
+                  />
+                  <TextField
+                    id="content"
+                    label="Content of the note"
+                    margin="dense"
+                    multiline
+                    fullWidth
+                    value={noteContent}
+                    onChange={(e) => setNoteContent(e.target.value)}
+                  />
+                </Paper>
+                <Paper
+                  className={classes.paper}
+                  elevation={5}
+                  style={{ flex: "1", marginLeft: "10px" }}
+                >
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    style={{ minHeight: "1.35em" }}
+                  >
+                    {noteTitle}
+                  </Typography>
+                  <Divider />
+                  <MarkdownRender input={noteContent} />
+                </Paper>
+              </Box>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleSubmit} color="primary">
+                Submit
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Box>
+      </Container>
     </div>
   );
 }

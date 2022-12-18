@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import * as PropTypes from "prop-types";
 import Paper from "@mui/material/Paper";
 import ReactMarkdown from "react-markdown";
-// import MuiMarkdown from "mui-markdown";
 
 const useStyles = makeStyles({
   root: {

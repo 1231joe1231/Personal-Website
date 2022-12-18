@@ -5,6 +5,7 @@ import CoverLetter from "./CoverLetterGenerator";
 import PageNotFound from "./NotFound";
 import Home from "./Home";
 import TechBlog from "./TechBlog";
+import Gallery from "./Gallery";
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         </Route>
         <Route path="/techblog">
           <TechBlog />
+        </Route>
+        <Route path="/gallery">
+          <Gallery />
         </Route>
         <Route path="/sudoku">
           <Sudoku />
