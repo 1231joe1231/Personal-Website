@@ -72,7 +72,7 @@ def images():
     if request.method == 'POST':
         # Redirect local request to remote server
         if local_dev:
-            redirect(host + '/images')
+            return redirect(host + '/api/images')
         else:
             # Upload images
             print(request.files, flush=True)
