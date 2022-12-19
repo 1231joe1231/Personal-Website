@@ -2,6 +2,9 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LinearProgress from "@mui/material/LinearProgress";
 
 const itemData = [
   {
@@ -67,15 +70,37 @@ const itemData = [
 ];
 
 export default function ImageCarousel() {
+  // const [progress, setProgress] = React.useState(0);
+
   return (
-    <Carousel>
+    <Carousel
+      fullHeightHover={false}
+      navButtonsWrapperProps={{
+        // Move the buttons to the bottom. Unsetting top here to override default style.
+        style: {
+          bottom: "20vh",
+        },
+      }}
+      NextIcon={<ChevronRightIcon fontSize="large" />}
+      PrevIcon={<ChevronLeftIcon fontSize="large" />}
+    >
       {itemData.map((item) => (
         <ImageListItem key={item.img}>
           <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+            src={item.img}
             alt={item.title}
             loading="lazy"
+            style={{ height: "40vh", width: "100%", objectFit: "cover" }}
+          />
+          <LinearProgress
+            variant="determinate"
+            style={{
+              position: "absolute",
+              bottom: 10,
+              left: 0,
+              right: 0,
+              height: "4px",
+            }}
           />
           <ImageListItemBar
             sx={{
