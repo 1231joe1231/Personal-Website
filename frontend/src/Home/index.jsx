@@ -52,11 +52,10 @@ export default function Home() {
                 <Container
                   sx={{
                     padding: "20px",
-                    height: "88vh",
                   }}
                 >
                   <Typography variant="h5">Recent quick notes</Typography>
-                  <List>
+                  <List sx={{ height: "80vh", overflow: "wrap" }}>
                     {notesArr.map((note) => (
                       <ListItem key={note.id}>
                         <QuicknoteCard
@@ -64,6 +63,7 @@ export default function Home() {
                           content={note.content}
                           key={note.id}
                           width="100%"
+                          alignItems="flex-start"
                         />
                       </ListItem>
                     ))}
@@ -76,11 +76,10 @@ export default function Home() {
                 <Container
                   sx={{
                     padding: "20px",
-                    height: "88vh",
                   }}
                 >
                   <Typography variant="h5">Recent quick notes</Typography>
-                  <List>
+                  <List sx={{ height: "80vh", overflow: "auto" }}>
                     {notesArr.map((note) => (
                       <ListItem key={note.id}>
                         <QuicknoteCard

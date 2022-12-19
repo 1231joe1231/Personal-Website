@@ -9,10 +9,12 @@ QuicknoteCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   width: PropTypes.string,
+  alignItems: PropTypes.string,
 };
 
 QuicknoteCard.defaultProps = {
   width: "auto",
+  alignItems: "center",
 };
 
 export default function QuicknoteCard(props) {
@@ -23,7 +25,7 @@ export default function QuicknoteCard(props) {
     width: props.width,
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: props.alignItems,
     // borderTopStyle: "solid",
     // borderTopWidth: "4px",
     // borderColor: "blue",
