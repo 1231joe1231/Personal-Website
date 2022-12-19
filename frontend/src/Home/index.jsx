@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div>
       <AppBar title="Home" />
-      <Container maxWidth="90vw" sx={{ height: "95vh" }}>
+      <Container maxWidth="90vw">
         <Grid container spacing={5} sx={{ padding: "20px" }}>
           <Grid
             container
@@ -41,21 +41,30 @@ export default function Home() {
             xs={12}
             sx={{ flexDirection: "column" }}
           >
-            <Grid xs={12}>self intro</Grid>
             <Grid xs={12}>
+              <Typography variant="h5" sx={{ margin: "20px" }}>
+                About me
+              </Typography>
+            </Grid>
+            <Grid xs={12}>
+              <Typography variant="h5" sx={{ margin: "20px" }}>
+                Recent photography works
+              </Typography>
               <ImageCarousel />
             </Grid>
           </Grid>
           <Grid container xl={8} md={6} xs={12}>
             <Grid xl={6} md={12} xs={12}>
+              <Typography variant="h5" sx={{ margin: "20px" }}>
+                Recent quick notes
+              </Typography>
               <Paper elevation={3}>
                 <Container
                   sx={{
                     padding: "20px",
                   }}
                 >
-                  <Typography variant="h5">Recent quick notes</Typography>
-                  <List sx={{ height: "80vh", overflow: "wrap" }}>
+                  <List sx={{ height: "75vh", overflow: "auto" }}>
                     {notesArr.map((note) => (
                       <ListItem key={note.id}>
                         <QuicknoteCard
@@ -72,14 +81,16 @@ export default function Home() {
               </Paper>
             </Grid>
             <Grid xl={6} md={12} xs={12}>
+              <Typography variant="h5" sx={{ margin: "20px" }}>
+                Recent articles
+              </Typography>
               <Paper elevation={3}>
                 <Container
                   sx={{
                     padding: "20px",
                   }}
                 >
-                  <Typography variant="h5">Recent quick notes</Typography>
-                  <List sx={{ height: "80vh", overflow: "auto" }}>
+                  <List sx={{ height: "75vh", overflow: "auto" }}>
                     {notesArr.map((note) => (
                       <ListItem key={note.id}>
                         <QuicknoteCard
