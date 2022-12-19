@@ -101,7 +101,7 @@ export default function Gallery() {
   return (
     <div>
       <AppBar title="Gallery" />
-      <Container>
+      <Container maxWidth="disabled">
         <Box>
           <ImageList variant="masonry" cols={3} gap={8}>
             {imageArr.map((item) => (

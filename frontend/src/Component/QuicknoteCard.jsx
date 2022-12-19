@@ -1,38 +1,39 @@
 import React from "react";
-import { makeStyles } from "@mui/styles";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import * as PropTypes from "prop-types";
 import Paper from "@mui/material/Paper";
 import ReactMarkdown from "react-markdown";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
-
 QuicknoteCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  width: PropTypes.string,
+};
+
+QuicknoteCard.defaultProps = {
+  width: "auto",
 };
 
 export default function QuicknoteCard(props) {
-  const classes = useStyles();
-
+  const paperStyle = {
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    borderRadius: "5px",
+    width: props.width,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    // borderTopStyle: "solid",
+    // borderTopWidth: "4px",
+    // borderColor: "blue",
+  };
   return (
-    <Paper
-      className={classes.root}
-      elevation={3}
-      style={{ padding: "20px", borderRadius: "5px" }}
-    >
-      <Typography gutterBottom variant="h5" component="h2">
+    <Paper elevation={3} sx={paperStyle}>
+      <Typography variant="h5" sx={{ marginTop: "5px", marginBottom: "5px" }}>
         {props.title}
       </Typography>
-      <Divider variant="fullWidth" />
+      <Divider variant="fullWidth" flexItem />
       <ReactMarkdown>{props.content}</ReactMarkdown>
     </Paper>
   );
