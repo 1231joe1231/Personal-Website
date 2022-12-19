@@ -40,7 +40,7 @@ export default function Home() {
           flexDirection: "column",
         }}
       >
-        <Grid container spacing={5} sx={{ margin: "0px" }}>
+        <Grid container spacing={3} sx={{ margin: "0px" }}>
           <Grid
             container
             xl={4}
@@ -49,7 +49,10 @@ export default function Home() {
             sx={{ flexDirection: "column" }}
           >
             <Grid xs={12}>
-              <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+              <Typography
+                variant="h5"
+                sx={{ marginBottom: "20px", marginTop: "10px" }}
+              >
                 About me
               </Typography>
               <Paper elevation={3}>
@@ -64,7 +67,7 @@ export default function Home() {
                 >
                   <Avatar
                     sx={{ width: "15vh", height: "15vh" }}
-                    src="/public/avatar.jpg"
+                    src="/avatar.jpg"
                   />
                   <div
                     style={{
@@ -74,7 +77,7 @@ export default function Home() {
                       marginLeft: "20px",
                     }}
                   >
-                    <Typography sx={{ fontSize: 30 }}>
+                    <Typography sx={{ fontSize: 24 }}>
                       Hello, I'm Ruixin(Joe) Zhuang
                     </Typography>
                     <List
@@ -120,28 +123,43 @@ export default function Home() {
                     >
                       <Button
                         variant="contained"
-                        href="https://www.linkedin.com/in/ruixin-zhuang/"
+                        onClick={() =>
+                          window.open(
+                            "https://www.linkedin.com/in/ruixin-zhuang/",
+                            "_blank"
+                          )
+                        }
                         sx={{ textTransform: "none" }}
                       >
                         LinkedIn
                       </Button>
                       <Button
                         variant="contained"
-                        href="https://github.com/1231joe1231"
+                        onClick={() =>
+                          window.open(
+                            "https://github.com/1231joe1231",
+                            "_blank"
+                          )
+                        }
                         sx={{ textTransform: "none" }}
                       >
                         Github
                       </Button>
                       <Button
                         variant="contained"
-                        href="https://space.bilibili.com/8190716"
+                        onClick={() =>
+                          window.open(
+                            "https://space.bilibili.com/8190716",
+                            "_blank"
+                          )
+                        }
                         sx={{ textTransform: "none" }}
                       >
                         Bilibili
                       </Button>
                       <Button
                         variant="contained"
-                        href="public/Resume.pdf"
+                        onClick={() => window.open("/Resume.pdf", "_blank")}
                         sx={{ textTransform: "none" }}
                       >
                         Resume
@@ -160,7 +178,10 @@ export default function Home() {
           </Grid>
           <Grid container xl={8} md={6} xs={12}>
             <Grid xl={6} md={12} xs={12}>
-              <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+              <Typography
+                variant="h5"
+                sx={{ marginBottom: "20px", marginTop: "10px" }}
+              >
                 Recent quick notes
               </Typography>
               <Paper elevation={3}>
@@ -201,7 +222,10 @@ export default function Home() {
               </Paper>
             </Grid>
             <Grid xl={6} md={12} xs={12}>
-              <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+              <Typography
+                variant="h5"
+                sx={{ marginBottom: "20px", marginTop: "10px" }}
+              >
                 Recent articles
               </Typography>
               <Paper elevation={3}>

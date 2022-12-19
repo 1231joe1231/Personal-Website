@@ -4,6 +4,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Typography } from "@mui/material";
 // import LinearProgress from "@mui/material/LinearProgress";
 import axios from "axios";
 
@@ -36,6 +37,7 @@ export default function ImageCarousel() {
           bottom: "20vh",
         },
       }}
+      IndicatorIcon={<div />}
       NextIcon={<ChevronRightIcon fontSize="large" />}
       PrevIcon={<ChevronLeftIcon fontSize="large" />}
     >
@@ -62,8 +64,9 @@ export default function ImageCarousel() {
               background:
                 "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
                 "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+              fontSize: 24,
             }}
-            title={item.title}
+            title={<Typography variant="h5">{item.title}</Typography>}
             position="top"
           />
         </ImageListItem>
