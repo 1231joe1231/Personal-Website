@@ -64,7 +64,7 @@ export default function Home() {
                 >
                   <Avatar
                     sx={{ width: "15vh", height: "15vh" }}
-                    src="/path/to/avatar.jpg"
+                    src="/public/avatar.jpg"
                   />
                   <div
                     style={{
@@ -141,7 +141,7 @@ export default function Home() {
                       </Button>
                       <Button
                         variant="contained"
-                        href="/projects"
+                        href="public/Resume.pdf"
                         sx={{ textTransform: "none" }}
                       >
                         Resume
