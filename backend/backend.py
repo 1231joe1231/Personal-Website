@@ -6,7 +6,7 @@ from flask import Flask, request, abort, jsonify, redirect
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
-from utility import insert_note_data, insert_image_data, get_image_data, get_note_data
+from utility import insert_note_data, insert_image_data, get_image_data, get_note_data, get_recent_image_data
 
 app = Flask(__name__)
 CORS(app, origins='http://localhost:3000')
@@ -110,6 +110,19 @@ def images():
             note = dict(note)
             images.append(note)
         return images
+
+
+@app.route("/images/recent", methods=['GET'])
+def get_recent_images():
+    count = request.args.get("count", default=5, type=int)
+    conn = get_db_connection()
+    db_images = get_recent_image_data(conn, count)
+    conn.close()
+    images = []
+    for note in db_images:
+        note = dict(note)
+        images.append(note)
+    return images
 
 
 if __name__ == "__main__":

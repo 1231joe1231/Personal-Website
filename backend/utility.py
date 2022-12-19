@@ -17,3 +17,8 @@ def get_note_data(connection):
 def get_image_data(connection):
     return connection.execute(
         'SELECT id, created, title, path FROM images;').fetchall()
+
+
+def get_recent_image_data(connection, count):
+    sql = "SELECT * FROM images ORDER BY created DESC LIMIT {0}"
+    return connection.execute(sql.format(count)).fetchall()
