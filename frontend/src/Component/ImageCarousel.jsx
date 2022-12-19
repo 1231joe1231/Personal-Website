@@ -47,7 +47,13 @@ export default function ImageCarousel() {
             src={item.path}
             alt={item.title}
             loading="lazy"
-            style={{ height: "40vh", width: "100%", objectFit: "cover" }}
+            style={{
+              height: "40vh",
+              width: "100%",
+              objectFit: "cover",
+              cursor: "pointer",
+            }}
+            onClick={() => window.open(item.path, "_blank")}
           />
           {/* <LinearProgress
             variant="determinate"
@@ -62,8 +68,8 @@ export default function ImageCarousel() {
           <ImageListItemBar
             sx={{
               background:
-                "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, " +
-                "rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+                "linear-gradient(to bottom, rgba(0,0,0,1) 0%, " +
+                "rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%)",
               fontSize: 24,
             }}
             title={<Typography variant="h5">{item.title}</Typography>}
