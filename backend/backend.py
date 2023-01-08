@@ -17,7 +17,7 @@ local_dev = True
 
 ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
 
-if os.environ['FLASK_ENV'] == 'dev':
+if 'FLASK_DEBUG' in os.environ and os.environ['FLASK_DEBUG'] == '1':
     print('Running in development mode', flush=True)
 else:
     print('Running in production mode', flush=True)

@@ -111,6 +111,8 @@ export default function Gallery() {
                   srcSet={`${item.path}?w=248&fit=crop&auto=format&dpr=2 2x`}
                   alt={item.title}
                   loading="lazy"
+                  onClick={() => window.open(item.path, "_blank")}
+                  style={{ cursor: "pointer" }}
                 />
               </ImageListItem>
             ))}

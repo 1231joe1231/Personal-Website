@@ -75,6 +75,7 @@ export default function Home() {
                       flexDirection: "column",
                       justifyContent: "center",
                       marginLeft: "20px",
+                      height: "25vh",
                     }}
                   >
                     <Typography sx={{ fontSize: 24 }}>
@@ -106,11 +107,6 @@ export default function Home() {
                       <ListItem dense alignItems="flex-start">
                         <Typography>
                           🌱 I’m currently learning Node.js, DevOps, React
-                        </Typography>
-                      </ListItem>
-                      <ListItem dense alignItems="flex-start">
-                        <Typography>
-                          📬 How to reach me: Click the link below!
                         </Typography>
                       </ListItem>
                     </List>
@@ -173,7 +169,9 @@ export default function Home() {
               <Typography variant="h5" sx={{ marginBottom: "20px" }}>
                 Recent photography works
               </Typography>
-              <ImageCarousel />
+              <Paper elevation={3}>
+                <ImageCarousel />
+              </Paper>
             </Grid>
           </Grid>
           <Grid container xl={8} md={6} xs={12}>

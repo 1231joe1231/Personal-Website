@@ -38,6 +38,13 @@ export default function ImageCarousel() {
         },
       }}
       IndicatorIcon={<div />}
+      indicatorContainerProps={{
+        // disable indicator
+        style: {
+          marginTop: "0px",
+          height: "0px",
+        },
+      }}
       NextIcon={<ChevronRightIcon fontSize="large" />}
       PrevIcon={<ChevronLeftIcon fontSize="large" />}
     >
