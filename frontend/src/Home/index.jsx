@@ -75,7 +75,7 @@ export default function Home() {
                       flexDirection: "column",
                       justifyContent: "center",
                       marginLeft: "20px",
-                      height: "25vh",
+                      height: "28vh",
                     }}
                   >
                     <Typography sx={{ fontSize: 24 }}>
@@ -89,24 +89,38 @@ export default function Home() {
                         "& .MuiListItem-root": {
                           display: "list-item",
                         },
+                        flex: 1,
+                        overflowY: "scroll",
+                        scrollbarWidth: "thin",
+                        "&::-webkit-scrollbar": {
+                          width: "0.4em",
+                        },
+                        "&::-webkit-scrollbar-thumb": {
+                          backgroundColor: "#888",
+                        },
+                        "&::-webkit-scrollbar-thumb:hover": {
+                          background: "#555",
+                        },
                       }}
                     >
                       <ListItem dense alignItems="flex-start">
                         <Typography>
                           👋 Hi, I'm Ruixin(Joe) Zhuang, a recent graduate from
                           Computer Science program at University of Toronto
-                          Scarborough
+                          Scarborough, currently seeking for a job, check my
+                          resume below!
                         </Typography>
                       </ListItem>
                       <ListItem dense alignItems="flex-start">
                         <Typography>
                           👀 I’m interested in coding, photography, films,
-                          camping, guitar
+                          camping, traveling and guitar
                         </Typography>
                       </ListItem>
                       <ListItem dense alignItems="flex-start">
                         <Typography>
-                          🌱 I’m currently learning Node.js, DevOps, React
+                          🌱 I’m currently learning Node.js, DevOps, React,
+                          Flask
                         </Typography>
                       </ListItem>
                     </List>

@@ -3,5 +3,6 @@
   "tabWidth": 2,
   "singleQuote": false,
   "jsxSingleQuote": false,
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "endOfLine": "auto"
 }

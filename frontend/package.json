@@ -27,8 +27,8 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "BUILD_PATH='./dist' react-scripts --openssl-legacy-provider build",
     "eject": "react-scripts eject",
-    "lint": "eslint src/*.js src/*.jsx",
-    "lint:fix": "eslint --fix src/*.js src/*.jsx",
+    "lint": "eslint src/*/*.js src/*/*.jsx",
+    "lint:fix": "eslint --fix src/*/*.js src/*/*.jsx",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json,scss} --config ./.prettierrc"
   },
   "eslintConfig": {
