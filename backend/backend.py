@@ -48,11 +48,12 @@ def notes():
     elif request.method == 'POST':
         title = request.json['title']
         content = request.json['content']
-        print("title is %s, content is %s" % (title, content))
+        type = request.json['type']
+        # print("title is %s, content is %s" % (title, content))
         if not len(title) == 0 and len(content) == 0:
             abort(400, 'Bad Request: empty title or content')
         conn = get_db_connection()
-        insert_note_data(conn, title, content)
+        insert_note_data(conn, title, content, type)
         conn.commit()
         conn.close()
         response = jsonify({"message": "This note is added successfully!"})

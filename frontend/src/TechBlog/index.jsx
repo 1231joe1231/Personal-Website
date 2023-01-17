@@ -18,6 +18,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import Divider from "@mui/material/Divider";
 import DialogTitle from "@mui/material/DialogTitle";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import MuiAlert from "@mui/material/Alert";
 import Masonry from "@mui/lab/Masonry";
@@ -48,6 +51,7 @@ export default function TechBlog() {
   const [alertSeverity, setAlertSeverity] = useState("");
   const [noteTitle, setNoteTitle] = useState("");
   const [noteContent, setNoteContent] = useState("");
+  const [noteType, setNoteType] = useState("0");
 
   const handleClickOpen = () => {
     setIsDialogOpen(true);
@@ -74,7 +78,11 @@ export default function TechBlog() {
   const handleSubmit = (event) => {
     event.preventDefault();
     backend
-      .post("/notes", { title: noteTitle, content: noteContent })
+      .post("/notes", {
+        title: noteTitle,
+        content: noteContent,
+        type: noteType,
+      })
       .then(() => {
         showAlert("Note added successfully!", "success");
         handleClose();
@@ -164,6 +172,26 @@ export default function TechBlog() {
                   elevation={5}
                   style={{ flex: "1", marginRight: "10px" }}
                 >
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="0"
+                      control={<Radio />}
+                      label="Note"
+                      checked={noteType === "0"}
+                      onChange={(e) => setNoteType(e.target.value)}
+                    />
+                    <FormControlLabel
+                      value="1"
+                      control={<Radio />}
+                      label="Article"
+                      checked={noteType === "1"}
+                      onChange={(e) => setNoteType(e.target.value)}
+                    />
+                  </RadioGroup>
                   <TextField
                     autoFocus
                     margin="dense"

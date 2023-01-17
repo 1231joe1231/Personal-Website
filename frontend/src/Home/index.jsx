@@ -20,9 +20,13 @@ const backend = axios.create({
 
 export default function Home() {
   const [notesArr, setNotesArr] = useState([]);
+  const [articleArr, setArticleArr] = useState([]);
 
   const fetchNotes = () => {
-    backend.get("/notes").then((response) => setNotesArr(response.data));
+    backend.get("/notes").then((response) => {
+      setNotesArr(response.data.filter((obj) => obj.type == 0));
+      setArticleArr(response.data.filter((obj) => obj.type == 1));
+    });
   };
 
   useEffect(() => {
@@ -262,7 +266,7 @@ export default function Home() {
                       },
                     }}
                   >
-                    {notesArr.map((note) => (
+                    {articleArr.map((note) => (
                       <ListItem key={note.id}>
                         <QuicknoteCard
                           title={note.title}
