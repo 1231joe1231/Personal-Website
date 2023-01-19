@@ -6,18 +6,12 @@ connection = sqlite3.connect('database.db')
 
 connection.executescript(
     '''DROP TABLE IF EXISTS notes;
-    DROP TABLE IF EXISTS images;
     CREATE TABLE notes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
-    type INTEGER NOT NULL);
-    CREATE TABLE images (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    title TEXT NOT NULL,
-    path TEXT NOT NULL);''')
+    type INTEGER NOT NULL);''')
 
 cur = connection.cursor()
 
