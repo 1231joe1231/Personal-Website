@@ -7,7 +7,7 @@ Brief introduction of who I am, technical blog, photography works, and more!
 - [x] Cover letter generator
 - [x] Little sudoku game
 - [x] Domain
-- [ ] Introduction and resume
-- [ ] Beautiful main page
-- [ ] Technical blog
-- [ ] photography work
+- [x] Introduction and resume
+- [ ] Beautiful main page (WIP)
+- [ ] Technical blog (WIP)
+- [ ] photography work (Upload after stable release)
