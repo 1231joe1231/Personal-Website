@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import Paper from "@mui/material/Paper";
-// import ReactMarkdown from "react-markdown";
 import MarkdownRender from "../Component/MarkdownRender";
 import AppBar from "../Component/AppBar";
 import QuicknoteCard from "../Component/QuicknoteCard";
@@ -16,15 +15,15 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import Divider from "@mui/material/Divider";
 import DialogTitle from "@mui/material/DialogTitle";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Typography from "@mui/material/Typography";
 import MuiAlert from "@mui/material/Alert";
 import Masonry from "@mui/lab/Masonry";
 import axios from "axios";
+import MdEditor from "react-markdown-editor-lite";
+import "react-markdown-editor-lite/lib/index.css";
 import { BACKEND_URL } from "../env";
 
 const useStyles = makeStyles(() => ({
@@ -68,6 +67,12 @@ export default function TechBlog() {
 
     setIsSnackBarOpen(false);
   };
+
+  /* eslint-disable no-unused-vars */
+  const handleEditorChange = ({ _, text }) => {
+    setNoteContent(text);
+  };
+  /* eslint-enable no-unused-vars */
 
   const showAlert = (msg, severity) => {
     setAlertMsg(msg);
@@ -148,6 +153,7 @@ export default function TechBlog() {
             </div>
           </Snackbar>
           <Dialog
+            fullScreen={noteType == "1"}
             open={isDialogOpen}
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
@@ -194,37 +200,24 @@ export default function TechBlog() {
                   </RadioGroup>
                   <TextField
                     autoFocus
-                    margin="dense"
+                    margin="normal"
                     id="title"
                     label="Title of the note"
                     fullWidth
                     value={noteTitle}
                     onChange={(e) => setNoteTitle(e.target.value)}
                   />
-                  <TextField
-                    id="content"
-                    label="Content of the note"
-                    margin="dense"
-                    multiline
-                    fullWidth
-                    value={noteContent}
-                    onChange={(e) => setNoteContent(e.target.value)}
+                  <MdEditor
+                    style={{
+                      marginTop: "10px",
+                      height: noteType === "0" ? "20vh" : "65vh",
+                      width: "100%",
+                    }}
+                    renderHTML={(text) => {
+                      return <MarkdownRender input={text} />;
+                    }}
+                    onChange={handleEditorChange}
                   />
-                </Paper>
-                <Paper
-                  className={classes.paper}
-                  elevation={5}
-                  style={{ flex: "1", marginLeft: "10px" }}
-                >
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    style={{ minHeight: "1.35em" }}
-                  >
-                    {noteTitle}
-                  </Typography>
-                  <Divider />
-                  <MarkdownRender input={noteContent} />
                 </Paper>
               </Box>
             </DialogContent>
