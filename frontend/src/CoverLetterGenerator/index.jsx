@@ -37,8 +37,8 @@ function CoverLetter() {
     "inspired me to apply for this position."
   );
   const [Address, setAddress] = useState("");
-  const [BodyPara1, setBodyPara1] = useState(1);
-  const [BodyPara2, setBodyPara2] = useState(1);
+  const [BodyPara1, setBodyPara1] = useState(0);
+  const [BodyPara2, setBodyPara2] = useState(0);
 
   const monthNames = [
     "January",
