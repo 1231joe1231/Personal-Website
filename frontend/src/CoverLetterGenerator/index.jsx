@@ -112,7 +112,7 @@ function CoverLetter() {
           text: [
             { text: "Ruixin(Joe) Zhuang\n", fontSize: 24 },
             "647-469-8666 • joe.zhuang@mail.utoronto.ca\n",
-            "linkedin.com/in/ruixin-zhuang • github.com/1231joe1231",
+            "linkedin.com/in/ruixin-zhuang • github.com/1231joe1231 • joe-zhuang.com",
           ],
           alignment: "center",
         },
@@ -138,7 +138,7 @@ function CoverLetter() {
             Title,
             " position at ",
             Employer,
-            ". I am currently a fourth year student at University of Toronto Scarborough, ",
+            ". I am currently recent graduate at University of Toronto Scarborough, ",
             "and I am specialized in Computer Science Co-op. ",
             // "Among all of my past experience including pursuing my degree on campus, ",
             // "working at start-up company, collaborating on off-campus projects and being an software developer at PwC Shanghai AC, ",
