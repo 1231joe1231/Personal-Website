@@ -6,7 +6,7 @@ from flask import Flask, request, abort, jsonify, redirect
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
-from utility import insert_note_data, insert_image_data, get_image_data, get_note_data, get_recent_image_data
+from utility import insert_note_data, insert_image_data, get_image_data, get_note_data, get_recent_image_data, get_note_data_id
 
 app = Flask(__name__)
 CORS(app, origins='http://localhost:3000')
@@ -34,26 +34,32 @@ def get_db_connection():
 def notes():
 
     if request.method == 'GET':
+        id = request.args.get('id', default=0, type=int)
         conn = get_db_connection()
-        db_notes = get_note_data(conn)
-        conn.close()
-        notes = []
-        for note in db_notes:
-            note = dict(note)
-            # Convert markdown to html
-            # note['content'] = markdown.markdown(note['content'])
-            notes.append(note)
+        if id == 0:
+            db_notes = get_note_data(conn)
+            conn.close()
+            notes = []
+            for note in db_notes:
+                note = dict(note)
+                # Convert markdown to html
+                # note['content'] = markdown.markdown(note['content'])
+                notes.append(note)
+            return notes
+        else:
+            note = dict(get_note_data_id(conn, id)[0])
+            conn.close()
+            return note
 
-        return notes
     elif request.method == 'POST':
         title = request.json['title']
         content = request.json['content']
-        type = request.json['type']
+        note_type = request.json['type']
         # print("title is %s, content is %s" % (title, content))
         if not len(title) == 0 and len(content) == 0:
             abort(400, 'Bad Request: empty title or content')
         conn = get_db_connection()
-        insert_note_data(conn, title, content, type)
+        insert_note_data(conn, title, content, note_type)
         conn.commit()
         conn.close()
         response = jsonify({"message": "This note is added successfully!"})

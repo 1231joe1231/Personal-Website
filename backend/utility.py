@@ -14,6 +14,11 @@ def get_note_data(connection):
         'SELECT id, created, title, content, type FROM notes;').fetchall()
 
 
+def get_note_data_id(connection, id):
+    sql = "SELECT id, created, title, content, type FROM notes WHERE id == {0};"
+    return connection.execute(sql.format(id)).fetchall()
+
+
 def get_image_data(connection):
     return connection.execute(
         'SELECT id, created, title, path FROM images;').fetchall()
