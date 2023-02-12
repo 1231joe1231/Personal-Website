@@ -5,6 +5,7 @@ import CoverLetter from "./CoverLetterGenerator";
 import PageNotFound from "./NotFound";
 import Home from "./Home";
 import TechBlog from "./TechBlog";
+import Article from "./TechBlog/article.jsx";
 import Gallery from "./Gallery";
 
 export default function App() {
@@ -25,6 +26,9 @@ export default function App() {
         </Route>
         <Route path="/coverletter">
           <CoverLetter />
+        </Route>
+        <Route path="/article/:id">
+          <Article />
         </Route>
         <Route path="*">
           <PageNotFound />
