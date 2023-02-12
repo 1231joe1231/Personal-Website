@@ -227,6 +227,7 @@ export default function Home() {
                         <QuicknoteCard
                           title={note.title}
                           content={note.content}
+                          id={note.id}
                           key={note.id}
                           width="100%"
                           alignItems="flex-start"

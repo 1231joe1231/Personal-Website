@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 QuicknoteCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   width: PropTypes.string,
   alignItems: PropTypes.string,
 };
@@ -31,7 +32,11 @@ export default function QuicknoteCard(props) {
     // borderColor: "blue",
   };
   return (
-    <Paper elevation={3} sx={paperStyle}>
+    <Paper
+      elevation={3}
+      sx={paperStyle}
+      onClick={() => window.open("/article/" + props.id, "_blank")}
+    >
       <Typography variant="h5" sx={{ marginTop: "5px", marginBottom: "5px" }}>
         {props.title}
       </Typography>
