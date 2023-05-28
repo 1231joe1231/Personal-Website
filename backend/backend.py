@@ -110,8 +110,8 @@ def images():
     elif request.method == 'GET':
         # Get all images
         id = request.args.get('id', default=0, type=int)
+        conn = get_db_connection()
         if id == 0:
-            conn = get_db_connection()
             db_images = get_image_data(conn)
             conn.close()
             images = []
