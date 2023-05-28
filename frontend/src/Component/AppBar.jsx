@@ -13,8 +13,8 @@ import ListSubheader from "@mui/material/ListSubheader";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import HomeIcon from "@mui/icons-material/Home";
-import DescriptionIcon from "@mui/icons-material/Description";
-import ToysIcon from "@mui/icons-material/Toys";
+// import DescriptionIcon from "@mui/icons-material/Description";
+// import ToysIcon from "@mui/icons-material/Toys";
 import NoteIcon from "@mui/icons-material/Note";
 import Link from "@mui/material/Link";
 import * as PropTypes from "prop-types";
@@ -96,7 +96,7 @@ export default function ButtonAppBar(props) {
             </ListItemIcon>
             <ListItemText primary="Gallery" />
           </ListItem>
-          <ListItem component={Link} href="/sudoku" underline="none">
+          {/* <ListItem component={Link} href="/sudoku" underline="none">
             <ListItemIcon>
               <ToysIcon />
             </ListItemIcon>
@@ -107,7 +107,7 @@ export default function ButtonAppBar(props) {
               <DescriptionIcon />
             </ListItemIcon>
             <ListItemText primary="Cover letter" />
-          </ListItem>
+          </ListItem> */}
         </List>
       </Drawer>
     </div>

@@ -107,8 +107,8 @@ export default function TechBlog() {
   };
 
   const checkAdmin = () => {
-    // setIsAdmin(localStorage.getItem("AdminToken") === "114514");
-    setIsAdmin(true);
+    setIsAdmin(localStorage.getItem("AdminToken") === "114514");
+    // setIsAdmin(true);
   };
 
   useEffect(() => {

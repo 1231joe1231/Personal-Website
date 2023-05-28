@@ -96,7 +96,7 @@ def images():
                 print("full_save_path is "+full_save_path, flush=True)
                 title = request.form['title']
                 if len(title) == 0:
-                    title = time.strftime("%H:%M:%S") + \
+                    title = time.strftime("%d_%b_%Y") + \
                         '.'+get_extension(filename)
                 uploaded_file.save(full_save_path)
                 uploaded_file.close()

@@ -111,14 +111,14 @@ export default function Home() {
                         <Typography>
                           👋 Hi, I'm Ruixin(Joe) Zhuang, a recent graduate from
                           Computer Science program at University of Toronto
-                          Scarborough, currently seeking for a job, check my
-                          resume below!
+                          Scarborough, currently working at Intact Datalab as AI
+                          Developer I.
                         </Typography>
                       </ListItem>
                       <ListItem dense alignItems="flex-start">
                         <Typography>
                           👀 I’m interested in coding, photography, films,
-                          camping, traveling and guitar
+                          camping, traveling and playing guitar
                         </Typography>
                       </ListItem>
                       <ListItem dense alignItems="flex-start">
