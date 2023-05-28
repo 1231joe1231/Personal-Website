@@ -6,7 +6,7 @@ from flask import Flask, request, abort, jsonify, redirect
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
-from utility import insert_note_data, insert_image_data, get_image_data, get_note_data, get_recent_image_data, get_note_data_id
+from utility import insert_note_data, insert_image_data, get_image_data, get_note_data, get_recent_image_data, get_note_data_id, get_image_data_id
 
 app = Flask(__name__)
 CORS(app, origins='http://localhost:3000')
@@ -89,15 +89,15 @@ def images():
             if uploaded_file.filename == '':
                 abort(400, 'Bad Request: file is empty')
             if uploaded_file and allowed_file(uploaded_file.filename):
-                filename = secure_filename(uploaded_file.filename)
-                print("cwd is "+cwd, flush=True)
+                filename = secure_filename(
+                    uploaded_file.filename) + time.strftime("%Y_%m_%d_%H_%M_%S")
+                # print("cwd is "+cwd, flush=True)
                 full_save_path = os.path.join(
                     cwd, image_folder, filename)
-                print("full_save_path is "+full_save_path, flush=True)
+                # print("full_save_path is "+full_save_path, flush=True)
                 title = request.form['title']
                 if len(title) == 0:
-                    title = time.strftime("%d_%b_%Y") + \
-                        '.'+get_extension(filename)
+                    title = time.strftime("%Y_%m_%d_%H_%M_%S")
                 uploaded_file.save(full_save_path)
                 uploaded_file.close()
                 hosted_image_path = host + '/images/' + filename
@@ -109,14 +109,20 @@ def images():
 
     elif request.method == 'GET':
         # Get all images
-        conn = get_db_connection()
-        db_images = get_image_data(conn)
-        conn.close()
-        images = []
-        for note in db_images:
-            note = dict(note)
-            images.append(note)
-        return images
+        id = request.args.get('id', default=0, type=int)
+        if id == 0:
+            conn = get_db_connection()
+            db_images = get_image_data(conn)
+            conn.close()
+            images = []
+            for note in db_images:
+                note = dict(note)
+                images.append(note)
+            return images
+        else:
+            image = dict(get_image_data_id(conn, id)[0])
+            conn.close()
+            return image
 
 
 @app.route("/images/recent", methods=['GET'])

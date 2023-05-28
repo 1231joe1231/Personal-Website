@@ -24,6 +24,11 @@ def get_image_data(connection):
         'SELECT id, created, title, path FROM images;').fetchall()
 
 
+def get_image_data_id(connection, id):
+    return connection.execute(
+        'SELECT id, created, title, path FROM images WHERE id == {0};').fetchall()
+
+
 def get_recent_image_data(connection, count):
     sql = "SELECT * FROM images ORDER BY created DESC LIMIT {0}"
     return connection.execute(sql.format(count)).fetchall()
