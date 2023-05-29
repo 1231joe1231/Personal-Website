@@ -24,6 +24,7 @@ export default function Article() {
     // fetch note from backend
     fetchNote();
   }, []);
+
   return (
     <div>
       <AppBar title="Article" />

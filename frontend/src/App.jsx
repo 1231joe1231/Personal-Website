@@ -7,6 +7,7 @@ import Home from "./Home";
 import TechBlog from "./TechBlog";
 import Article from "./TechBlog/article.jsx";
 import Gallery from "./Gallery";
+import Image from "./Gallery/image.jsx";
 
 export default function App() {
   return (
@@ -17,6 +18,9 @@ export default function App() {
         </Route>
         <Route path="/techblog">
           <TechBlog />
+        </Route>
+        <Route path="/gallery/:id">
+          <Image />
         </Route>
         <Route path="/gallery">
           <Gallery />
