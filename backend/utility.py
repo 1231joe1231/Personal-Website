@@ -25,8 +25,8 @@ def get_image_data(connection):
 
 
 def get_image_data_id(connection, id):
-    return connection.execute(
-        'SELECT id, created, title, path FROM images WHERE id == {0};').fetchall()
+    sql = 'SELECT id, created, title, path FROM images WHERE id == {0};'
+    return connection.execute(sql.format(id)).fetchall()
 
 
 def get_recent_image_data(connection, count):
