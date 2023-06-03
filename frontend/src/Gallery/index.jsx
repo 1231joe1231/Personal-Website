@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AppBar from "../Component/AppBar";
-import Container from "@mui/material/Container";
+// import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
@@ -104,98 +104,116 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <AppBar title="Gallery" />
-      <Container maxWidth="disabled">
-        <Box>
-          <PhotoProvider toolbarRender={toolbarRender}>
-            <ImageList variant="masonry" cols={4} gap={8}>
-              {imageArr.map((item) => (
-                <PhotoView key={item.id} src={item.path}>
-                  <ImageListItem>
-                    <DeleteTooltip imageId={item.id} />
-                    <img src={item.path} loading="lazy" />
-                  </ImageListItem>
-                </PhotoView>
-              ))}
-            </ImageList>
-          </PhotoProvider>
-        </Box>
-        {isAdmin && (
-          <Fab
-            color="primary"
-            aria-label="add"
-            onClick={handleClickOpen}
-            style={{ position: "absolute", right: "20px", bottom: "20px" }}
-          >
-            <AddIcon />
-          </Fab>
-        )}
-        <Snackbar
-          anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
-          open={isSnackbarOpen}
-          onClose={handleSnackbarClose}
-          autoHideDuration={6000}
+      <PhotoProvider
+        toolbarRender={toolbarRender}
+        sx={{
+          display: "flex",
+          maxHeight: "100%",
+        }}
+      >
+        <ImageList
+          variant="masonry"
+          cols={4}
+          gap={8}
+          sx={{
+            padding: "10px",
+            marginY: "0px",
+            scrollbarWidth: "thin",
+            "&::-webkit-scrollbar": {
+              width: "0.4em",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#888",
+            },
+            "&::-webkit-scrollbar-thumb:hover": {
+              background: "#555",
+            },
+          }}
         >
-          <div>
-            <Alert onClose={handleClose} severity={alertSeverity}>
-              {alertMsg}
-            </Alert>
-          </div>
-        </Snackbar>
-        <Dialog
-          open={isDialogOpen}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-          maxWidth="lg"
-          fullWidth
+          {imageArr.map((item) => (
+            <PhotoView key={item.id} src={item.path}>
+              <ImageListItem>
+                <DeleteTooltip imageId={item.id} />
+                <img src={item.path} loading="lazy" />
+              </ImageListItem>
+            </PhotoView>
+          ))}
+        </ImageList>
+      </PhotoProvider>
+      {isAdmin && (
+        <Fab
+          color="primary"
+          aria-label="add"
+          onClick={handleClickOpen}
+          style={{ position: "absolute", right: "20px", bottom: "20px" }}
         >
-          <DialogTitle id="form-dialog-title">Upload an image</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              This pic definitely looks good~
-            </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="title"
-              label="Title of the image"
-              fullWidth
-              value={imageTitle}
-              onChange={(e) => setImageTitle(e.target.value)}
-            />
-            <input
-              accept="image/*"
-              style={{ display: "none" }}
-              id="raised-button-file"
-              multiple
-              type="file"
-              onChange={handleFileChange}
-            />
-            <label htmlFor="raised-button-file">
-              <Button variant="contained" component="span">
-                Upload
-              </Button>
-            </label>
-            {image && (
-              <CardMedia
-                component="img"
-                alt="Uploaded image"
-                image={URL.createObjectURL(image)}
-                title="Uploaded image"
-              />
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
+          <AddIcon />
+        </Fab>
+      )}
+      <Snackbar
+        anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+        open={isSnackbarOpen}
+        onClose={handleSnackbarClose}
+        autoHideDuration={6000}
+      >
+        <div>
+          <Alert onClose={handleClose} severity={alertSeverity}>
+            {alertMsg}
+          </Alert>
+        </div>
+      </Snackbar>
+      <Dialog
+        open={isDialogOpen}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        maxWidth="lg"
+        fullWidth
+      >
+        <DialogTitle id="form-dialog-title">Upload an image</DialogTitle>
+        <DialogContent>
+          <DialogContentText>This pic definitely looks good~</DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="title"
+            label="Title of the image"
+            fullWidth
+            value={imageTitle}
+            onChange={(e) => setImageTitle(e.target.value)}
+          />
+          <input
+            accept="image/*"
+            style={{ display: "none" }}
+            id="raised-button-file"
+            multiple
+            type="file"
+            onChange={handleFileChange}
+          />
+          <label htmlFor="raised-button-file">
+            <Button variant="contained" component="span">
+              Upload
             </Button>
-            <Button onClick={handleSubmit} color="primary">
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </Container>
-    </div>
+          </label>
+          {image && (
+            <CardMedia
+              component="img"
+              alt="Uploaded image"
+              image={URL.createObjectURL(image)}
+              title="Uploaded image"
+            />
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit} color="primary">
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 }
