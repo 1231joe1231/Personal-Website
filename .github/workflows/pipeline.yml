@@ -10,8 +10,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            frontend:
+              - 'frontend/**'
 
       - name: Build Frontend
+        if: steps.filter.outputs.frontend == 'true'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -29,6 +38,7 @@ jobs:
             npm run build
 
       - name: Deploy Frontend
+        if: steps.filter.outputs.frontend == 'true'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -41,6 +51,7 @@ jobs:
             mv dist/ /var/www
 
       - name: Start Backend
+        if: steps.filter.outputs.backend == 'true'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
