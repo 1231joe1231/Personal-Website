@@ -17,6 +17,8 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const backend = axios.create({
   // always upload image to server
@@ -104,7 +106,7 @@ export default function Gallery() {
       <AppBar title="Gallery" />
       <Container maxWidth="disabled">
         <Box>
-          <ImageList variant="masonry" cols={3} gap={8}>
+          {/* <ImageList variant="masonry" cols={3} gap={8}>
             {imageArr.map((item) => (
               <ImageListItem key={item.path}>
                 <img
@@ -117,7 +119,18 @@ export default function Gallery() {
                 />
               </ImageListItem>
             ))}
-          </ImageList>
+          </ImageList> */}
+          <PhotoProvider>
+            <ImageList variant="masonry" cols={4} gap={8}>
+              {imageArr.map((item) => (
+                <PhotoView key={item.path} src={item.path}>
+                  <ImageListItem>
+                    <img src={item.path} loading="lazy" />
+                  </ImageListItem>
+                </PhotoView>
+              ))}
+            </ImageList>
+          </PhotoProvider>
         </Box>
         {isAdmin && (
           <Fab
