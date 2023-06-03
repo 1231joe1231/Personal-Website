@@ -18,6 +18,7 @@ import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import toolbarRender from "./galleryToolBar";
+import DeleteTooltip from "./imageDeleteTooltip";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
@@ -112,6 +113,7 @@ export default function Gallery() {
               {imageArr.map((item) => (
                 <PhotoView key={item.id} src={item.path}>
                   <ImageListItem>
+                    <DeleteTooltip imageId={item.id} />
                     <img src={item.path} loading="lazy" />
                   </ImageListItem>
                 </PhotoView>
