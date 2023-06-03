@@ -17,6 +17,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import toolbarRender from "./galleryToolBar";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
@@ -106,24 +107,10 @@ export default function Gallery() {
       <AppBar title="Gallery" />
       <Container maxWidth="disabled">
         <Box>
-          {/* <ImageList variant="masonry" cols={3} gap={8}>
-            {imageArr.map((item) => (
-              <ImageListItem key={item.path}>
-                <img
-                  src={`${item.path}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.path}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                  onClick={() => window.open(item.path, "_blank")}
-                  style={{ cursor: "pointer" }}
-                />
-              </ImageListItem>
-            ))}
-          </ImageList> */}
-          <PhotoProvider>
+          <PhotoProvider toolbarRender={toolbarRender}>
             <ImageList variant="masonry" cols={4} gap={8}>
               {imageArr.map((item) => (
-                <PhotoView key={item.path} src={item.path}>
+                <PhotoView key={item.id} src={item.path}>
                   <ImageListItem>
                     <img src={item.path} loading="lazy" />
                   </ImageListItem>
