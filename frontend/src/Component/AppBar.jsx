@@ -23,9 +23,6 @@ const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: 20,
-  },
   title: {
     flexGrow: 1,
   },
@@ -55,6 +52,7 @@ export default function ButtonAppBar(props) {
               setIsOpen(!isOpen);
             }}
             size="large"
+            sx={{ marginRight: "10px" }}
           >
             <MenuIcon />
           </IconButton>
