@@ -51,7 +51,7 @@ def auth_viewer():
 
 
 def check_password(password):
-    # Load password file and check credentials
+    # Load password file and check it
     password_file = "./password"
     with open(password_file, "r") as f:
         for line in f:
