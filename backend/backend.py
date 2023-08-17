@@ -39,7 +39,7 @@ def get_db_connection():
     return conn
 
 
-@app.route("/auth_viewer", methods=["GET"])
+@app.route("/auth_viewer", methods=["GET", "POST"])
 def auth_viewer():
     password = request.args.get("password")
 
