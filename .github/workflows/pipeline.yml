@@ -59,7 +59,11 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/Personal-Website/backend
+            cd /home/ubuntu/Personal-Website
+            git reset --hard
+            git clean -fd
+            git pull
+            cd ./backend
             source ./venv/bin/activate
             pip install -r requirements.txt
             sudo systemctl restart personal-website-backend
