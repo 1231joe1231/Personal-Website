@@ -61,9 +61,7 @@ function Stream() {
               variant="contained"
               size="large"
               onClick={() => {
-                setVideoSrc(
-                  "http://joe-zhuang.com:8080/hls/" + input + ".m3u8"
-                );
+                setVideoSrc("https://joe-zhuang.com/hls/" + input + ".m3u8");
               }}
             >
               Submit
