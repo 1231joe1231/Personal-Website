@@ -14,8 +14,6 @@ function Stream() {
   const videoJsOptions = {
     autoplay: true,
     controls: true,
-    height: "720px",
-    width: "1280px",
     sources: [
       {
         src: videoSrc,
