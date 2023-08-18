@@ -14,6 +14,8 @@ function Stream() {
   const videoJsOptions = {
     autoplay: true,
     controls: true,
+    width: "400",
+    // nativeControlsForTouch: true,
     sources: [
       {
         src: videoSrc,
